@@ -3,7 +3,7 @@
     "title": "Machine Learning Knowledge Note",
     
     "plugins": [
-    	"mathjax", 
+        "mathjax",
     	"anchors",
     	"splitter",
     	"prism", 
