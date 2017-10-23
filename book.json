@@ -1,0 +1,53 @@
+{
+    "author": "Jinghua Zhu",
+    "title": "Machine Learning Knowledge Note",
+    
+    "plugins": [
+    	"mathjax", 
+    	"anchors",
+    	"splitter",
+    	"prism", 
+    	"-highlight",
+    	"book-summary-scroll-position-saver",
+        "tbfed-pagefooter",
+        "expandable-chapters",
+        "github",
+        "github-buttons",
+        "search"
+    ],
+
+    "pluginsConfig": {
+        "github-buttons": {
+            "repo": "jinghzhu/MachineLearningNote",
+            "types": [
+                "star",
+                "watch"
+            ],
+            "size": "small"
+        },
+        "github": {
+            "url": "https://github.com/jinghzhu/MachineLearningNote"
+        },
+    	"mathjax":{
+            "forceSVG": false
+        },
+        "tbfed-pagefooter": {
+            "Contact":"jhzhu@outlook.com",
+            "modify_label": "Last Modified:",
+            "modify_format": "DD-MM-YYYY"
+        }
+  	},
+
+    "pdf": {
+        "toc": false,
+        "fontSize": 12,
+        "margin": {
+            "bottom": 36,
+            "left": 62,
+            "right": 62,
+            "top": 36
+        },
+        "pageNumbers": true,
+        "paperSize": "a4"
+    }
+}
