@@ -10,3 +10,4 @@
 
     * [Week 2]()
         * [Multiple Features](/ML_Coursera_Andrew/Week2/mult_features.md)
+        * [Normal Equation](/ML_Coursera_Andrew/Week2/normal_equation.md)
