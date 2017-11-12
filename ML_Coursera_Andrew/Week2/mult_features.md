@@ -17,12 +17,6 @@
   <img src="./Images/mf2.png" width = "550"/>
 </p>
 
-<br>
-
-<p align="center">
-  <img src="./Images/mf3.png" width = "550"/>
-</p>
-
 <br></br>
 
 
@@ -58,7 +52,7 @@
 
 <br>
 
-最简单方式是缩放特征范围到[0, 1]或[-1, 1]，通式如下：
+最简单方式是缩放特征范围到[0, 1]或[-1, 1]：
 
 $$
 x^{'} = \frac{x-\text{min}(x)}{\text{max}(x)-\text{min}(x)}
@@ -72,7 +66,7 @@ $$
 
 <br>
 
-For mean normalisatio:
+For mean normalization:
 
 $$
 x^{'} = \frac{x-\text{mean}(x)}{\text{max}(x)-\text{min}(x)}
@@ -90,9 +84,6 @@ $$
 
 ## Learning Rate
 ----
-* Debugging gradient descent. Make a plot with number of iterations on the x-axis. Now plot the cost function, $$\mathit{J}(\theta_0)$$ over the number of iterations of gradient descent. If $$\mathit{J}(\theta_0)$$ ever increases, then probably need to decrease α.
-
-* Automatic convergence test. Declare convergence if $$\mathit{J}(\theta_0)$$ decreases by less than E in one iteration, where E is some small value such as $$10^{-3}$$. 
 
 <p align="center">
   <img src="./Images/mf7.png" width = "550"/>
@@ -100,7 +91,7 @@ $$
 
 <br>
 
-It has been proven that if learning rate α is sufficiently small, then $$\mathit{J}(\theta_0)$$ will decrease on every iteration.
+It has been proven that if learning rate $$ \alpha $$ is sufficiently small, then $$ \text{J}(\theta_0) $$ will decrease on every iteration.
 
 <p align="center">
   <img src="./Images/mf8.png" width = "550"/>
@@ -115,7 +106,7 @@ It has been proven that if learning rate α is sufficiently small, then $$\mathi
 <br>
 
 <p align="center">
-  <img src="./Images/mf10.png" width = "550"/>
+  <img src="./Images/mf10.png" width = "750"/>
 </p>
 
 <br>
