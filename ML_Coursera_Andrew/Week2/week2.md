@@ -11,7 +11,7 @@
 定义梯度符号为$$ \nabla $$，则J的梯度表示为：
 
 $$
-\nabla_\theta J = \begin{bmatrix} \frac{\partial J}{\partial\theta_0} & \cdots & \frac{\partial J}{\partial\theta_n} \end{bmatrix}^{\rm T} \in \mathbb{R}^{n+1} \tag 8
+\nabla_\theta J = \begin{bmatrix} \frac{\partial J}{\partial\theta_0} & \cdots & \frac{\partial J}{\partial\theta_n} \end{bmatrix}^{\rm T} \in \mathbb{R}^{n+1} \tag 1
 $$
 
 再比如，对于一个函数映射（$$ m \times n $$的矩阵到实数的映射）：
@@ -29,7 +29,8 @@ $$
 \vdots & \ddots & \vdots \\
 \frac{\partial f}{\partial A_{m1}} & \cdots & \frac{\partial f}{\partial A_{mn}}
 \end{bmatrix}
-\tag 9$$
+\tag 2
+$$
 
 其中A是$$ m \times n$$矩阵。比如对于$$2 \times 2$$矩阵A，有函数f，定义为：
 
@@ -51,7 +52,7 @@ $$
 
 $$
 \text{trA} = \sum_{i=1}^{n}A_{ii}
-\tag {10}
+\tag {3}
 $$
 
 把梯度和迹组合，得到如下性质：
@@ -78,11 +79,11 @@ X =
 \vdots \\
 (x^{m})^{T}
 \end{bmatrix}
-\tag {11}
+\tag {4}
 $$
 
 $$
-Y = \begin{bmatrix} y^{1} & \cdots & y^{m} \end{bmatrix}^{\rm T} \tag {12}
+Y = \begin{bmatrix} y^{1} & \cdots & y^{m} \end{bmatrix}^{\rm T} \tag {5}
 $$
 
 因此，可以得到：
@@ -106,23 +107,23 @@ h_{\theta}(x^{1}) - y^{1} \\
 \vdots \\
 h_{\theta}(x^{m}) - y ^{m}
 \end{bmatrix}
-\tag {13}
+\tag {6}
 $$
 
 所以，得到目标函数J向量表达为：
 
 $$
 J(\theta) = \frac{1}{2} (X\theta - Y)^{T}(X\theta - Y) = \frac{1}{2} \sum^{m}{i=1}(h_{\theta}(x^{i}) - y^{i})^{2}
-\tag {14}
+\tag {7}
 $$
 
 可以得到计算J的梯度公式推导：
 
 <p align="center">
-  <img src="./Images/week1_2.png" width = "550"/>
+  <img src="./Images/week2_1.png" width = "550"/>
 </p>
 
-公式15中：
+上述公式中：
 1. 第一行展开；
 2. 第二行应用性质6；
 3. 第三行应用性质4，且$$ Y^{T}Y $$为常数；
@@ -134,7 +135,7 @@ $$
 
 $$
 X^{T}X\theta = X^{T}Y \to \theta = (X^{T}X)^{-1}X^{T}Y
-\tag {16}
+\tag {8}
 $$
 
-从而，求出了参数，这种方法称为正规方程组。
+从而求出了参数，这种方法称为正规方程组。
