@@ -22,9 +22,7 @@ $$
 \mathit{J}(\theta_0, \theta_1) = \frac{1}{2m} \sum_{i=1}^{m}(\hat{y_i}-y_i)^2 = \sum_{i=1}^{m} (h_\theta(x_i)-y_i)^2
 $$
 
-To break it apart, it is $$\frac{1}{2}\bar{x}$$ where $$\bar{x}$$ is the mean of the squares of $$h_\theta(x_i)−y_i$$, or the difference between the predicted value and the actual value.
-
-This function is otherwise called the "Squared error function", or "Mean squared error". The mean is halved $$\frac{1}{2}$$ as a convenience for the computation of the gradient descent, as the derivative term of the square function will cancel out the $$\frac{1}{2}$$ term. The following image summarizes what the cost function does: 
+To break it apart, it is $$ \frac{1}{2}\bar{x} $$ where $$ \bar{x} $$ is the mean of the squares of $$ h_\theta(x_i)−y_i $$, or the difference between the predicted value and the actual value. The following image summarizes what the cost function does: 
 
 <p align="center">
   <img src="./Images/cost1.png" width = "550"/>
@@ -32,7 +30,7 @@ This function is otherwise called the "Squared error function", or "Mean squared
 
 <br>
 
-If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by $$h_\theta(x)$$) which passes through these scattered data points. 
+If we try to think of it in visual terms, our training data set is scattered on the x-y plane. We are trying to make a straight line (defined by $$ h_\theta(x) $$) which passes through these scattered data points. 
 
 <p align="center">
   <img src="./Images/cost2.png" width = "550"/>
@@ -40,7 +38,7 @@ If we try to think of it in visual terms, our training data set is scattered on 
 
 <br>
 
-Our objective is to get the best possible line. The best possible line will be such so that the average squared vertical distances of the scattered points from the line will be the least. Ideally, the line should pass through all the points of our training data set. In such a case, the value of $$\mathit{J}(\theta_0, \theta_1)$$ will be 0.
+Our objective is to get the best possible line. Ideally, the line should pass through all the points of our training data set. In such a case, the value of $$ \mathit{J}(\theta_0, \theta_1) $$ will be 0.
 
 <p align="center">
   <img src="./Images/cost3.png" width = "550"/>
@@ -48,7 +46,7 @@ Our objective is to get the best possible line. The best possible line will be s
 
 <br>
 
-When $$\theta_1=1$$, we get a slope of 1 which goes through every single data point in our model. Conversely, when $$\theta_1=0.5$$, we see the vertical distance from our fit to the data points increase. 
+When $$ \theta_1=1 $$, we get a slope of 1 which goes through every single data point in our model. Conversely, when $$ \theta_1=0.5 $$, we see the vertical distance from our fit to the data points increase. 
 
 <p align="center">
   <img src="./Images/cost4.png" width = "550"/>
@@ -64,7 +62,7 @@ This increases our cost function to 0.58. Plotting several other points yields t
 
 <br>
 
-Thus as a goal, we should try to minimize the cost function. In this case, $$\theta_1=1$$ is our global minimum. 
+Thus as a goal, we should try to minimize the cost function. In this case, $ $\theta_1=1 $$ is our global minimum. 
 
 A contour plot is a graph that contains many contour lines. A contour line of a two variable function has a constant value at all points of the same line. An example of such a graph is the one to the right below.
 
@@ -74,7 +72,7 @@ A contour plot is a graph that contains many contour lines. A contour line of a 
 
 <br>
 
-Taking any color and going along the 'circle', one would expect to get the same value of the cost function. For example, the three green points found on the green line above have the same value for $$\mathit{J}(\theta_0, \theta_1)$$ and as a result, they are found along the same line. The circled _x_ displays the value of the cost function for the graph on the left when $$\theta_0 = 800$$ and $$\theta_1= -0.15$$. Taking another $$h(x)$$ and plotting its contour plot, one gets the following graphs:
+Taking any color and going along the 'circle', one would expect to get the same value of the cost function. For example, the three green points found on the green line above have the same value for $$ \mathit{J}(\theta_0, \theta_1) $$ and as a result, they are found along the same line. The circled _x_ displays the value of the cost function for the graph on the left when $$ \theta_0 = 800 $$ and $$ \theta_1= -0.15 $$. Taking another $$ h(x) $$ and plotting its contour plot, one gets the following graphs:
 
 <p align="center">
   <img src="./Images/cost7.png" width = "550"/>
@@ -82,7 +80,7 @@ Taking any color and going along the 'circle', one would expect to get the same 
 
 <br>
 
-When $$\theta_0 = 360$$ and $$\theta_1 = 0$$, the value of $$\mathit{J}(\theta_0, \theta_1)$$ in the contour plot gets closer to the center thus reducing the cost function error. Now giving our hypothesis function a slightly positive slope results in a better fit of the data.
+When $$ \theta_0 = 360 $$ and $$ \theta_1 = 0 $$, the value of $$ \mathit{J}(\theta_0, \theta_1) $$ in the contour plot gets closer to the center thus reducing the cost function error. Now giving our hypothesis function a slightly positive slope results in a better fit of the data.
 
 <p align="center">
   <img src="./Images/cost8.png" width = "550"/>
