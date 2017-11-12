@@ -6,8 +6,6 @@
 
 ## Model Representation
 ----
-Use $$ x_i $$ to denote the “input” variables, also called input features, and $$y_i$$ to denote the “output” or target variable that we are trying to predict. A pair $$(x_i,y_i)$$ is called a training example, and the dataset that we’ll be using to learn—a list of _m_ training examples $$(x_i,y_i)$$—is called a training set. We will also use _X_ to denote the space of input values, and _Y_ to denote the space of output values. In this example, $$X = Y = \mathbb{R}$$. 
-
 <p align="center">
   <img src="./Images/model_repre.png" width = "550"/>
 </p>
