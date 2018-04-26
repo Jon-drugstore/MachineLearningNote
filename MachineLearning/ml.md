@@ -87,6 +87,20 @@ On the other hand, Machine Learning like decision trees give us crisp rules as t
 
 ## GPU vs CPU
 ----
+GPU好处：
+1. 显示芯片有更大内存带宽。例如GeForce 8800GTX有50GB/s内存带宽，高阶CPU内存带宽在10GB/s。
+2. 显示芯片有更大量执行单元。例如GeForce 8800GTX有128个 "stream processors"，频率为1.35GHz。CPU频率通常较高，但执行单元数目要少。
+
+GPU缺点：
+1. 显示芯片运算单元数量很多，因此对于不能高度并行化工作，带来的帮助不大。
+2. 显示芯片通常只支持32 bits浮点数，且多半不能完全支持IEEE 754规格，有些运算精确度较低。目前许多显示芯片没有分开整数运算单元，因此整数运算效率差。
+3. 显示芯片通常不具有分支预测等复杂流程控制单元，因此对于具有高度分支的程序，效率差。
+
+由于显示芯片大量并行计的特性，它处理问题方式和CPU不同：
+1. 内存存取latency问题：CPU使用cache解决。显示芯片多半没有cache或很小，所以利用并行化
+执行方式来隐藏内存的latency。即当第一个thread需等待内存读取结果时，则开始执行第二个thread，依此类推。
+2. 分支指令问题：CPU利用分支预测等减少分支指令造成的pipeline bubble。显示芯片使用类似处理内存latency方式。不过，显示芯片处理分支效率会差。
+
 <p align="center">
   <img src="./Images/gpu_cpu.jpg" width = "600"/>
 </p>
