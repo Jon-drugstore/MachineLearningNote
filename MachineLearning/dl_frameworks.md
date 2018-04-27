@@ -27,20 +27,37 @@
 
 ## Tensorflow
 ----
+采用了更高级数据流处理范式，其中表示计算的图不再需要是DAG。图中可包括环，并支持可变状态。
+
+TensorFlow将计算表示为一个由节点和边组成的有向图。节点表示计算操作或可变状态（如Variable），边表示节点间通信的多维数组，多维数据称为Tensor。TensorFlow需用户静态声明逻辑计算图，并通过将图重写和划分到机器上实现分布式计算。MXNet使用动态定义的图。这简化了编程，并提高了编程的灵活性。
+
+<p align="center">
+  <img src="./Images/dl_frameworks6.jpg" width = "400"/>
+</p>
+
 优点：
 1. Google背书，拥有产品级的高质量代码。
+
 2. 是一个理想的RNN API和实现，TensorFlow使用向量运算的符号图方法，使得新网络的指定变得相当容易，支持快速开发。
+
 3. 支持使用ARM/NEON指令实现model decoding。
+
 4. TensorBoard是一个非常好用的网络结构可视化工具，对于分析训练网络非常有用
+
 5. 编译过程比Theano快，它简单地把符号张量操作映射到已经编译好的函数调用
+
 6. 模型部署多样化。
     核心代码和Caffe一样是用C++编写，简化了线上部署复杂度，并让手机这种内存和CPU资源都紧张的设备可运行复杂模型（Python会比较消耗资源）。除核心代码的C++接口，TensorFlow还有官方的Python、Go和Java接口，通过SWIG（Simplified Wrapper and Interface Generator）实现。这样可在硬件配置较好的机器中用Python进行实验，在资源紧张的嵌入式环境或需低延迟环境中用C++部署模型。
+
 7. 支持其它机器学习算法。
     TensorFlow不局限于神经网络，其数据流式图支持自由的算法表达，可实现深度学习外的机器学习算法。只要可以将计算表示成计算图形式，就可使用TensorFlow。用户可写内层循环代码控制计算图分支的计算，TensorFlow自动将相关分支转为子图并执行迭代运算。TensorFlow也可将计算图中各个节点分配到不同的设备执行，充分利用硬件资源。定义新的节点只需写一个Python函数，如果没有对应的底层运算核，那需要写C++或CUDA代码实现运算操作。
+
 8. 良好的硬件异构形。
     TensorFlow支持Intel和AMD的CPU，通过CUDA支持NVIDIA GPU，通过OpenCL支持AMD GPU，支持Linux和Mac。在v0.12尝试支持Windows。在生产环境中，硬件设备有些是最新的，有些是老机型。TensorFlow异构性让它能全面支持各种硬件和操作系统。同时，其在CPU上矩阵运算库使用了Eigen而不是BLAS库，能够基于ARM架构编译和优化，因此在移动设备上表现得很好。
+
 9. 原生支持分布式。
     目前原生支持的分布式深度学习框架不多，只有TensorFlow、CNTK、DeepLearning4J、MXNet等。
+
 10. 原声实现应用机器学习的全流程：从训练模型、调试参数，到打包模型，最后部署服务。
     Google在2016年2月开源TensorFlow Serving，可将训练好的模型导出，并部署成可对外提供预测服务的RESTful接口。其他框架都缺少为生产环境部署的考虑。
 
@@ -71,7 +88,6 @@ Caffe核心概念是Layer，每一个神经网络模块都是一个Layer。Layer
 5. 组件模块化，可以方便地拓展到新的模型和学习任务上。
 6. 拥有大量的训练好的经典模型。
 7. 底层是基于C++的，因此可在各种硬件环境编译并具有良好的移植性。支持Linux、Mac和Windows，也可部署到移动设备系统。
-8. 
 
 缺点：    
 1. 有很多扩展，但由于遗留架构问题，不够灵活且对递归网络和语言建模支持很差。
@@ -91,13 +107,17 @@ Caffe核心概念是Layer，每一个神经网络模块都是一个Layer。Layer
 优点：
 1. 从CPU上计算切换到GPU加速无须任何代码改动。
     因为底层使用Theano或TensorFlow，用Keras训练模型可享受前两者持续开发带来的性能提升，只是简化了编程的复杂度，节约了尝试新网络结构的时间。
+
 2. 适合最前沿的研究。
     因为所有模块都是可配置、可随意插拔的，神经网络、损失函数、优化器、初始化方法、激活函数和正则化等模块都可以自由组合。Keras也包括绝大部分 state-of-the-art的Trick，包括Adam、RMSProp、Batch Normalization、PReLU、ELU、LeakyReLU等。
+
 3. Keras中模型都是在Python中定的，不像Caffe等需额外文件定义模型，这样就可通过编程方式调试模型结构和各种超参数。
+
 4. 构建在Python 上，有一套完整的科学计算工具链。
 
 缺点：
 1. 无法直接使用多GPU。
+
     对大规模的数据处理速度没其他支持多GPU和分布式框架快。
 
 <br></br>
@@ -106,16 +126,69 @@ Caffe核心概念是Layer，每一个神经网络模块都是一个Layer。Layer
 
 ## MXNet
 ----
-是DMLC（Distributed Machine Learning Community）开发的，让用户可混合使用符号编程模式和指令式编程模式。目前已经
+是DMLC（Distributed Machine Learning Community）开发的，让用户可混合使用符号编程模式和指令式编程模式。类似TensorFlow，MXNet也是数据流系统，支持具有可变状态有环计算图，并支持使用参数-服务器模型的训练计算。MXNet也对多个CPU/GPU 上数据并行提供了支持，并可实现模型并行。MXNet支持同步的和异步训练计算。在其组件中，运行时依赖引擎分析计算过程中的依赖关系，对不存在相互依赖关系的计算做并行处理。
+
+<p align="center">
+  <img src="./Images/dl_frameworks7.jpg" width = "400"/>
+</p>
+
+MXNet使用检查点机制支持基本的容错，提供对模型save和load操作。
+
+MXNet使用描述式编程语言表述计算为一个有向图，也支持使用指令式编程去定义tensor的计算和控制流。与TensorFlo 一样，MXNet后台核心引擎库使用C++编写。
 
 优点：
 1. AWS背书。
     是AWS官方推荐的深度学习框架。
+
 2. 社区资源好。
     MXNet很多作者是中国人。
+
 3. 分布式性能佳。
     是各个框架中率先支持多GPU和分布式的。MXNet核心是一个动态的依赖调度器，支持自动将计算任务并行化到多个GPU或分布式集群（支持 AWS、Azure、Yarn等)。
+
 4. 支持非常多的语言封装，比如 C++、Python、R、Julia、Scala、Go、MATLAB和JavaScript等。
+
+<br></br>
+
+
+
+## Spark
+----
+在Spark中，计算被建模为有向无环图DAG。每个顶点表示一个RDD，每条边表示了RDD上一个操作。RDD由一系列被切分的对象（Partition）组成。被切分的对象在内存中存储并完成计算，也会在Shuffle过程中溢出（Overflow）到磁盘上。
+
+在DAG中，一条从顶点A到B的有向边E，表示RDD B在RDD A上执行操作E的结果。操作分为转换（Transformation）和动作（Action）两类。转换操作（如map、filter和join）用于某个RDD上，转换操作输出是一个新的RDD。
+
+<p align="center">
+  <img src="./Images/dl_frameworks3.jpg" width = "400"/>
+</p>
+
+用户将计算建模为DAG，该DAG表示了在RDD上执行的转换和动作。DAG进而被编译为多个Stage。每个Stage执行一系列并行运行的任务（Task），每个分区（Partition）对应一个任务。这里，有限（Narrow）依赖关系（一对一、多对一）有利于计算的高效执行，而宽泛（Wide）依赖关系（多对多）会引入瓶颈。因为这样的依赖关系引入通信密集Shuffle操作，打断了操作流 。
+
+<p align="center">
+  <img src="./Images/dl_frameworks4.jpg" width = "400"/>
+</p>
+
+Spark分布是通过将DAG Stage划分到不同计算节点实的。上图展示了maste-worker架构。驱动器（Driver）包含两个调度器（Scheduler）组件，即DAG调度器和任务调度器。调度器对工作者分配任务并协调工作者。
+
+Spark为通用数据处理而设计，并非专用于机器学习任务。要在Spark上运行机器学习任务，可用MLlib for Spark。如果采用基本设置的Spark，那么模型参数存储在驱动器节点上，在每次迭代后通过工作者和驱动器通信更新参数。如果是大规模部署机器学习任务，驱动器可能无法存储所有模型参数。这时需用RDD去容纳所有参数。这将引入大量额外开销，因为为容纳更新的模型参数，需在每次迭代中创建新RDD。更新模型会涉及在机器和磁盘间数据Shuffle，进而限制Spark扩展性。这正是基本数据流模型（即DAG）短板。Spark不能很好地支持机器学习中迭代运算。
+
+<br></br>
+
+
+
+## PMLS
+----
+专门为机器学习任务而设计，引入称为“Parameter-Server抽象，这种抽象是为了支持迭代密集的训练过程。
+
+<p align="center">
+  <img src="./Images/dl_frameworks5.jpg" width = "400"/>
+</p>
+
+PS（图中绿色方框）以分布式key-value形式存于内存，是可复制和分片的。每个node是模型中某个分片的主节点（参数空间），并作为其它分片二级节点或复制节点。
+
+PS节点存储并更新模型参数，并响应来自于工作者请求。工作者从自己本地PS拷贝上请求最新模型参数，并分配给它们数据集分区上执行计算。
+
+PMLS也采用SSP（Stale Synchronous Parallelism）模型。相比于BSP（Bulk Synchronous Parellelism）模型 ，SSP放宽了每一次迭代结束时各机器需做同步的要求。为实现同步，SSP允许工作者间存在一定程度上不同步，并确保最快工作者不会领先最慢工作者s轮迭代。由于处理过程处于误差允许范围内，这种非严格一致性模型适用于机器学习。
 
 <br></br>
 
