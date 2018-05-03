@@ -15,11 +15,13 @@
 ## Types of Neural Networks
 ----
 1. Feedforward
+    
     **The information moves in only one directio, forward. There are no cycles or loops in the network.** Single-layer Perceptron, Multi-layer perceptron, and Convolutional Neural Network (CNN) are this type.
 
     ![](./Images/ann21.jpg)
 
 2. Feedback
+    
     In Feedback, loops are allowed. They are used in content addressable memories. Recurrent Neural Network (RNN) is this type.
 
     ![](./Images/ann22.jpg)
@@ -34,7 +36,7 @@
 
 ## Neuron 神经元
 ----
-神经元模型是一个包含输入，输出与计算功能的模型。输入可以类比为神经元的树突，而输出可以类比为神经元的轴突，计算则可以类比为细胞核。
+神经元模型是一个包含输入，输出与计算功能的模型。
 
 <p align="center">
   <img src="./Images/ann1.jpg" width = "600"/>
@@ -98,7 +100,7 @@ $$
 
 ## 单层神经网络 Single-layer Perceptron
 ----
-假如要预测的不是一个值，而是一个向量，例如 $$ [2,3] $$，那么在输出层增加一个输出单元。
+假要预测的不是一个值，是一个向量，如 $$ [2,3] $$，那么输出层增加一个输出单元。
 
 <p align="center">
   <img src="./Images/ann5.jpg" width = "600"/>
@@ -108,9 +110,7 @@ $$
 
 <br>
 
-可以看到， $$ z_1 $$的计算跟原先的_z_没有区别。 $$ z_2 $$的计算中除了三个新的权值 $$ w_4 $$， $$ w_5 $$和 $$ w6 $$外，其他与 $$ z_1 $$一样。
-
-改用二维下标，用 $$ w_{x,y} $$表达权值。_x_代表后一层神经元序号，_y_代表前一层神经元的序号。例如， $$ w_{1,2} $$代表后一层第1个神经元与前一层第2个神经元的连接的权值。
+可以看到， $$ z_1 $$计算跟原先_z_没有区别。 $$ z_2 $$的计算中除了三个新的权值 $$ w_4 $$， $$ w_5 $$和 $$ w6 $$外，其他与 $$ z_1 $$一样。改用二维下标，用 $$ w_{x,y} $$表达权值。_x_代表后一层神经元序号，_y_代表前一层神经元的序号。例如， $$ w_{1,2} $$代表后一层第1个神经元与前一层第2个神经元的连接的权值。
 
 <p align="center">
   <img src="./Images/ann6.jpg" width = "600"/>
@@ -120,7 +120,7 @@ $$
 
 <br>
 
-仔细看输出计算公式，发现这两个公式是线性代数方程组。因此可用矩阵乘法表达。例如，输入变量是 $$ [a_1，a_2，a_3]^T $$ （代表由 $$ a_1 $$， $$ a_2 $$， $$ a_3 $$组成的列向量），用向量_a_表示。方程左边是 $$ [z_1，z_2]^T $$，用向量_z_表示。系数是矩阵_W_。于是，输出公式改写成：
+发现这两个公式是线性代数方程组。因此可用矩阵乘法表达。例如，输入变量是 $$ [a_1，a_2，a_3]^T $$ （代表由 $$ a_1 $$， $$ a_2 $$， $$ a_3 $$组成的列向量），用向量_a_表示。方程左边是 $$ [z_1，z_2]^T $$，用向量_z_表示。系数是矩阵_W_。于是，输出公式改写成：
 $$
 g(W * a) = z
 $$
@@ -189,8 +189,6 @@ The output is computed by multiplying input _x_ by weight $$ w_0 $$ and passing 
   <img src="./Images/ann11.png" width = "600"/>
 </p>
 
-<br>
-
 Changing weight $$ w_0 $$ essentially changes the "steepness" of the sigmoid. That's useful, but what if you wanted to output 0 when _x_ is 2? Just changing steepness of sigmoid won't really work -- you want to be able to shift entire curve to right.
 
 That's exactly what bias to do. If we add a bias, like so:
@@ -223,7 +221,9 @@ Output becomes $$ sig(w_0*x + w_1*1.0) $$. Here is what the output looks like fo
 
 其中，红线与蓝线代表数据。红色区域和蓝色区域代表由神经网络划开的区域，两者的分界线就是决策分界。
 
-可以看到，两层神经网络决策分界是非常平滑的曲线。前面已学到单层网络只能做线性分类任务，而两层网络中后一层也是线性分类层。为什么两个线性分类任务结合就可做非线性分类任务？把输出层的决策分界单独拿出来看：
+两层神经网络决策分界是平滑的曲线。单层网络只能做线性分类任务，而两层网络中后一层也是线性分类层。为什么两个线性分类任务结合就可做非线性分类任务？
+
+把输出层决策分界单独拿出来看：
 
 <p align="center">
   <img src="./Images/ann15.png" width = "600"/>
@@ -241,16 +241,16 @@ Output becomes $$ sig(w_0*x + w_1*1.0) $$. Here is what the output looks like fo
 
 
 ### 训练
-模型训练目的是使参数尽可能与真实模型逼近。首先，给所有参数赋上随机值。使用随机生成的参数值，预测训练数据中的样本。样本的预测目标为 $$ y_p $$，真实目标为_y_。那么，定义一个值_loss_，计算公式如下：
+首先，给所有参数赋上随机值。使用随机生成的参数值，预测训练数据中的样本。样本的预测目标为 $$ y_p $$，真实目标为_y_。那么，定义一个值_loss_，计算公式如下：
 $$
 loss = (y_p - y)^2
 $$
 
 目标就是使对所有训练数据的损失和尽可能小。如果将神经网络预测矩阵公式带入 $$ y_p $$中（因为 $$ z=y_p $$），那么可把损失写为关于参数的函数。这个函数称为损失函数（loss function）。
 
-下面的问题就是求如何优化参数，能够让损失函数的值最小。
+下面的问题就是求如何优
 
-此时问题转化为优化问题。一般解决这个优化问题使用的是**梯度下降算法**。梯度下降算法每次计算参数在当前的梯度，然后让参数向梯度反方向前进一段距离，不断重复，直到梯度接近零时截止。这时候，所有参数恰好达到使损失函数达到最低值的状态。
+此时问题转化为优化化参数，让损失函数值最小。一般解决这个问题使用**梯度下降算法**。梯度下降算法每次计算参数在当前的梯度，然后让参数向梯度反方向前进一段距离，不断重复，直到梯度接近零时截止。这时，所有参数恰好达到使损失函数达到最低值的状态。
 
 在神经网络模型中，由于结构复杂，每次计算梯度代价很大。因此还需使用**反向传播算法**。反向传播算法利用神经网络结构进行计算。不一次计算所有参数梯度，而是从后往前。首先计算输出层梯度，然后是第二个参数矩阵梯度，接着中间层梯度，再是第一个参数矩阵梯度，最后是输入层梯度。计算结束后，所要的两个参数矩阵的梯度就有了。
 

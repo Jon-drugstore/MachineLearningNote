@@ -11,23 +11,10 @@
     	"book-summary-scroll-position-saver",
         "tbfed-pagefooter",
         "expandable-chapters",
-        "github",
-        "github-buttons",
         "search"
     ],
 
     "pluginsConfig": {
-        "github-buttons": {
-            "repo": "jinghzhu/MachineLearningNote",
-            "types": [
-                "star",
-                "watch"
-            ],
-            "size": "small"
-        },
-        "github": {
-            "url": "https://github.com/jinghzhu/MachineLearningNote"
-        },
     	"mathjax":{
             "forceSVG": false
         },

@@ -15,7 +15,7 @@
 通常host端程序将数据准备好后，复制到显卡内存，再由显示芯片执行device端程序。完成后由host端程序将结果从显卡内存取回。
 
 <p align="center">
-  <img src="./Images/cuda1.png" width = "600"/>
+  <img src="./Images/cuda1.png" width = "300"/>
 </p>
 
 <p align="center">
@@ -33,7 +33,7 @@
 每个thread都有自己一份register和local memory空间。同一个block中每个thread有共享的一份share memory。此外，所有thread（包括不同block的thread）都共享一份global memory、constant memory和texture memory。不同grid则有各自global memory、constant memory和texture memory。
 
 <p align="center">
-  <img src="./Images/cuda3.png" width = "600"/>
+  <img src="./Images/cuda3.png" width = "300"/>
 </p>
 
 <center><i>Grid、block和thread关系</i></center>
