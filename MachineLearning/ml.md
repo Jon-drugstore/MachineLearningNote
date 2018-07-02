@@ -23,10 +23,6 @@ AI是合集概念，涵盖最早老式人工智能，到深度学习。
 
 深度学习起源于人工神经网络。
 
-<p align="center">
-  <img src="./Images/ml3.jpg" width = "600"/>
-</p>
-
 <br>
 
 
