@@ -7,10 +7,8 @@
 ## Artificial Intelligence vs Machine Learning vs Deep Learning
 ----
 <p align="center">
-  <img src="./Images/ml4.png" width = "600"/>
+  <img src="./Images/ml4.png" width = "700"/>
 </p>
-
-AI是合集概念，涵盖最早老式人工智能，到深度学习。
 
 机器学习是AI子集，涵盖有关数据训练的学习算法研究：
 * 线性回归（Linear Regression，数理统计中回归分析方法）；
@@ -20,8 +18,6 @@ AI是合集概念，涵盖最早老式人工智能，到深度学习。
 * PCA（Principal Component Analysis，主成分分析，一种多变量分析方法）；
 * SVM（Support Vector Machine，支持向量机，一种监督式学习的方法）；
 * ANN（Artificial Neural Networks，人工神经网络，一种运算模型）。
-
-深度学习起源于人工神经网络。
 
 <br>
 
@@ -62,14 +58,6 @@ When solving a problem using traditional Machine Learning, it is generally recom
 <br>
 
 
-### Execution time
-Deep Learning takes long time to train. Because there are so many parameters. State of the art Deep Learning algorithm ResNet takes about two weeks to train completely from scratch. Whereas Machine Learning comparatively takes much less time to train, ranging from a few seconds to a few hours.
-
-This is turn is completely reversed on testing time. At test time, Deep Learning algorithm takes much less time to run. Whereas, if you compare it with k-nearest neighbors, test time increases on increasing the size of data. Although this is not applicable on all Machine Learning, as some of them have small testing times too.
-
-<br>
-
-
 ### Interpretability
 Let’s take an example. Suppose we use Deep Learning to give automated scoring to essays. The performance it gives is near human performance. But it does not reveal why it has given that score. Indeed mathematically you can find out which nodes of a deep neural network were activated, but we don’t know what there neurons were supposed to model and what these layers of neurons were doing collectively. So we fail to interpret the results.
 
@@ -91,9 +79,8 @@ GPU缺点：
 3. 显示芯片通常不具有分支预测等复杂流程控制单元，因此对于具有高度分支的程序，效率差。
 
 由于显示芯片大量并行计的特性，它处理问题方式和CPU不同：
-1. 内存存取latency问题：CPU使用cache解决。显示芯片多半没有cache或很小，所以利用并行化
-执行方式来隐藏内存的latency。即当第一个thread需等待内存读取结果时，则开始执行第二个thread，依此类推。
-2. 分支指令问题：CPU利用分支预测等减少分支指令造成的pipeline bubble。显示芯片使用类似处理内存latency方式。不过，显示芯片处理分支效率会差。
+1. 内存存取latency问题：CPU使用cache解决。GPU没有cache或很小，所以用并行化执行方式隐藏内存latency。即当第一个进程需等待内存读取结果时，则开始执行第二个进程，依此类推。
+2. 分支指令问题：CPU利用分支预测等减少分支指令造成的pipeline bubble。GPU使用类似处理内存latency方式，但效率差。
 
 <p align="center">
   <img src="./Images/gpu_cpu.jpg" width = "600"/>

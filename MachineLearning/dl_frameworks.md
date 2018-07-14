@@ -23,28 +23,22 @@
 
 
 
-## Tensorflow
+## TensorFlow
 ----
-采用了更高级数据流处理范式，其中表示计算的图不再需要是DAG。图中可包括环，并支持可变状态。
+采用高级数据流处理范式，其中表示计算的图不再需要是DAG。图中可包括环，并支持可变状态。
 
-TensorFlow将计算表示为一个由节点和边组成的有向图。节点表示计算操作或可变状态（如Variable），边表示节点间通信的多维数组，多维数据称为Tensor。TensorFlow需用户静态声明逻辑计算图，并通过将图重写和划分到机器上实现分布式计算。MXNet使用动态定义的图。这简化了编程，并提高了编程的灵活性。
-
-<p align="center">
-  <img src="./Images/dl_frameworks6.jpg" width = "400"/>
-</p>
+TensorFlow将计算表示为一个由节点和边组成的有向图。节点表示计算操作或可变状态（如Variable），边表示节点间通信的多维数组，多维数据称为Tensor。TensorFlow需用户静态声明逻辑计算图，并通过将图重写和划分到机器上实现分布式计算。MXNet使用动态定义的图。
 
 优点：
-1. Google背书，拥有产品级的高质量代码。
+1. Google背书。
 
-2. 是一个理想的RNN API和实现，TensorFlow使用向量运算的符号图方法，使得新网络的指定变得相当容易，支持快速开发。
+2. 支持使用ARM/NEON指令实现model decoding。
 
-3. 支持使用ARM/NEON指令实现model decoding。
-
-4. TensorBoard是一个非常好用的网络结构可视化工具，对于分析训练网络非常有用。
+3. TensorBoard可视化工具，对分析训练网络有用。
 
 5. 模型部署多样化。
 
-    核心代码和Caffe一样用C++编写，简化了线上部署复杂度，并让手机这种内存和CPU资源都紧张的设备可运行复杂模型（Python会比较消耗资源）。除核心代码的C++接口，TensorFlow还有官方的Python、Go和Java接口，通过SWIG（Simplified Wrapper and Interface Generator）实现。这样可在硬件配置较好的机器中用Python进行实验，在资源紧张的嵌入式环境或需低延迟环境中用C++部署模型。
+    核心代码和Caffe一样用C++编写，简化线上部署复杂度，并让手机可运行复杂模型（Python较消耗资源）。除核心代码C++接口，TensorFlow还有Python、Go和Java接口，通过SWIG（Simplified Wrapper and Interface Generator）实现。这样可在硬件配置较好的机器中用Python实验，在资源紧张的嵌入式环境或需低延迟环境中用C++部署模型。
 
 6. 支持其它机器学习算法。
     
@@ -66,9 +60,7 @@ TensorFlow将计算表示为一个由节点和边组成的有向图。节点表�
 缺点：
 1. 速度慢，内存占用较大。
 
-2. 支持的层没有Torch和Theano丰富，特别是没有时间序列的卷积，且卷积也不支持动态输入尺寸，这些功能在NLP中非常有用。
-
-3. 分布式通信使用基于socket的RPC，而不是RDMA。
+2. 分布式通信使用基于socket的RPC，而不是RDMA。
     
     目前在单GPU条件下，大多数深度学习框架都依赖于cuDNN。因此只要硬件计算能力或内存分配差异不大，最终训练速度不会相差太大。但对于大规模深度学习，需分布式计算，所以框架分布式性能是重要的。目前TensorFlow设计对不同设备间的通信优化得不是很好，单机reduction只能用CPU处理，分布式通信基于socket的RPC，而不是速度更快的RDMA，所以其分布式性能可能还没有达到最优。
 
