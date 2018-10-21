@@ -105,3 +105,108 @@ GPU缺点：
 </p>
 
 <br></br>
+
+
+
+## Validation
+----
+Make sure test set meets the following two conditions:
+1. Is large enough to yield statistically meaningful results?
+2. Is representative of the data set as a whole? In other words, don't pick a test set with different characteristics than the training set.
+
+Never train on test data. If seeing surprisingly good results on evaluation metrics, it might be a sign that you are accidentally training on test set. For example, high accuracy might indicate that test data has leaked into training set.
+
+For example, consider a model that predicts whether an email is spam, using the subject line, email body, and sender's email address as features. We apportion the data into training and test sets, with an 80-20 split. After training, the model achieves 99% precision on both the training set and the test set. Take a look at the data and discover that many of the examples in the test set are duplicates of examples in the training set.
+
+Partition data set:
+
+![](./Images/part_data_set.svg)
+
+Use validation set to evaluate results from training set. Then, use test set to double-check evaluation after model has "passed" the validation set.
+
+![](./Images/data_validation_wf.svg)
+
+<br></br>
+
+
+
+## Feature Engineering
+----
+### Mapping categorical values
+Categorical features have a discrete set of possible values. For example, there might be a feature called `street_name` with options that include:
+
+```
+{'Charleston Road', 'North Shoreline Boulevard', 'Shorebird Way', 'Rengstorff Avenue'}
+```
+
+We can accomplish this by defining a mapping from the feature values, which we'll refer to as the vocabulary of possible values, to integers. Since not every street in the world will appear in dataset, we can group all other streets into a catch-all "other" category, known as an OOV (out-of-vocabulary) bucket.
+
+Here's how we can map our street names to numbers:
+* map Charleston Road to 0
+* map North Shoreline Boulevard to 1
+* map Shorebird Way to 2
+* map Rengstorff Avenue to 3
+* map everything else (OOV) to 4
+
+However, if we incorporate these index numbers directly into our model, it will impose some constraints:
+* We'll be learning a single weight that applies to all streets. For example, if we learn a weight of 6 for street_name, then we will multiply it by 0 for Charleston Road, by 1 for North Shoreline Boulevard and so on. Consider a model that predicts house prices using `street_name` as a feature. It is unlikely that there is a linear adjustment of price based on street name, and furthermore this would assume you have ordered the streets based on their average house price. Our model needs the flexibility of learning different weights for each street that will be added to the price estimated using the other features.
+
+* We aren't accounting for cases where `street_name` may take multiple values. For example, many houses are located at the corner of two streets, and there's no way to encode that information in the `street_name` value if it contains a single index.
+
+To remove both constraints, we can create a binary vector for each categorical feature in model that represents values as follows:
+* For values that apply to the example, set corresponding vector elements to 1.
+* Set all other elements to 0.
+
+The length of this vector is equal to the number of elements in vocabulary. This representation is called a **one-hot encoding** when a single value is 1, and a multi-hot encoding when multiple values are 1.
+
+Figure illustrates a one-hot encoding of a particular street: Shorebird Way. The element in the binary vector for Shorebird Way has a value of 1, while the elements for all other streets have values of 0.
+
+![](./Images/one_hot_encoding.svg)
+
+<br>
+
+
+### Qualities of Good Features
+* Avoid rarely used discrete feature values.
+
+  Good feature values should appear more than 5 or so times in a data set. For example, `unique_house_id` is a bad feature because each value would be used only once, so the model couldn't learn anything from it.
+
+* Prefer clear and obvious meanings.
+
+* Don't mix "magic" values with actual data
+
+  Take `quality_rating` as an example, both values 0.82 and 0.37 are fine. If a user didn't enter a `quality_rating`, perhaps the data set represented its absence with a magic value like -1. To work with it, we need to convert the feature into two features:
+
+  1. One feature holds only quality ratings, never magic values.
+  2. One feature holds a boolean value indicating whether or not a `quality_rating` was supplied. Give this boolean feature a name like `is_quality_rating_defined`.
+
+*  Account for upstream instability.
+
+  The definition of a feature shouldn't change over time. For example, `city_id: "br/sao_paulo"` is good.
+
+<br></br>
+
+
+
+## Data Clean
+----
+### Binning
+The plot shows the relative prevalence of houses at different latitudes in California. Notice the clustering—Los Angeles is about at latitude 34 and San Francisco is roughly at latitude 38.
+
+![Houses per latitude](./Images/binning1.svg)
+
+`latitude` is a floating-point value. It doesn't make sense to represent `latitude` as a floating-point feature in model. Because no linear relationship exists between `latitude` and housing values. For example, houses in latitude 35 are not 35/34 more expensive (or less expensive) than houses at latitude 34.
+
+To make `latitude` a helpful predictor, divide them into "bins":
+
+![Binning values](./Images/binning2.svg)
+
+Instead of having one floating-point feature, we now have 11 distinct boolean features. Having 11 separate features is somewhat inelegant, so let's unite them into a single 11-element vector. Doing so will enable us to represent latitude 37.4 as follows:
+
+```
+[0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0]
+```
+
+Model can now learn completely different weights for each latitude.
+
+Another approach is to bin by quantile, which ensures that the number of examples in each bucket is equal. Binning by quantile completely removes the need to worry about outliers.
