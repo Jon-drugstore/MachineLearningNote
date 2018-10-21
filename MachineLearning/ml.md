@@ -188,6 +188,35 @@ Figure illustrates a one-hot encoding of a particular street: Shorebird Way. The
 
 
 
+## Feature Corsses
+----
+### Encoding Nonlinearity
+This is a linear problem.
+
+![](./Images/feature_crosses1.png)
+
+But this is not.
+
+![](./Images/feature_corsses2.png)
+
+To solve it, create a feature cross. **A feature cross is a synthetic feature that encodes nonlinearity in the feature space by multiplying two or more input features together.** Create a feature cross named $$x_{3}$$ by crossing $$x_{1}$$ and $$x_{2}$$:
+
+$$
+x_{3} = x_{1}x_{2}
+$$
+
+Treat newly minted $$x_{3}$$ feature cross just like any other feature. The linear formula becomes:
+
+$$
+y = b + w_{1}x_{1} + w_{2}x_{2} + w_{3}x_{3}
+$$
+
+A linear algorithm can learn a weight for $$w_{3}$$ as it would for $$w_{1}$$ and $$w_{2}$$. In other words, although $$w_{3}$$ encodes nonlinear information, you don’t need to change how the linear model trains to determine the value of $$w_{3}$$.
+
+<br></br>
+
+
+
 ## Data Clean
 ----
 ### Binning
