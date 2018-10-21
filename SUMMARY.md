@@ -6,6 +6,8 @@
     * [CUDA](MachineLearning/cuda.md)
     * [Deep Learning Framework](MachineLearning/dl_frameworks.md)
     * [Regularization](MachineLearning/regularization.md)
+    * [Theory]()
+        * [Statistics](MachineLearning/Theory/statistics.md)
 
 * [Machine Learning@Coursera]()
     * [Week 1](/ML_Coursera_Andrew/Week1/week1.md)

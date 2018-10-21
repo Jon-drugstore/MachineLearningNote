@@ -239,3 +239,11 @@ Instead of having one floating-point feature, we now have 11 distinct boolean fe
 Model can now learn completely different weights for each latitude.
 
 Another approach is to bin by quantile, which ensures that the number of examples in each bucket is equal. Binning by quantile completely removes the need to worry about outliers.
+
+<br></br>
+
+
+
+## Others
+----
+![](./Images/overfitting_all.jpg)
