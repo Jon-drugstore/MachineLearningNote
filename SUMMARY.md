@@ -7,6 +7,7 @@
     * [CUDA](MachineLearning/cuda.md)
     * [Deep Learning Framework](MachineLearning/dl_frameworks.md)
     * [Regularization](MachineLearning/regularization.md)
+    * [Softmax](MachineLearning/softmax.md)
     * [Theory]()
         * [Statistics](MachineLearning/Theory/statistics.md)
 
