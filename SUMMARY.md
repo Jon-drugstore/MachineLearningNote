@@ -2,6 +2,7 @@
 
 * [Machine Learning](/MachineLearning/ml.md)
     * [Artificial Neural Networks](/MachineLearning/ann.md)
+    * [Classification](/MachineLearning/classification.md)
     * [Convolutional Neural Network](/MachineLearning/cnn.md)
     * [CUDA](MachineLearning/cuda.md)
     * [Deep Learning Framework](MachineLearning/dl_frameworks.md)
