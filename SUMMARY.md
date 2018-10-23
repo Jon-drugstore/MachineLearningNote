@@ -5,6 +5,7 @@
     * [Classification](/MachineLearning/classification.md)
     * [Convolutional Neural Network](/MachineLearning/cnn.md)
     * [CUDA](MachineLearning/cuda.md)
+    * [Embedding](MachineLearning/embedding.md)
     * [Deep Learning Framework](MachineLearning/dl_frameworks.md)
     * [Regularization](MachineLearning/regularization.md)
     * [Softmax](MachineLearning/softmax.md)
