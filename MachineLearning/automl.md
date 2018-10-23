@@ -190,3 +190,83 @@ Java开发的机器学习平台，在与机器学习库类似的抽象级别上�
 https://github.com/EpistasisLab/tpot
 
 TPOT（基于树的管道优化工具）用于查找和生成最佳数据科学管道代码的遗传编程框架。TPOT从sklearn获取算法。TPOT优势在于其独特的优化方法，提供更多独特管道。还提供一个将训练好的管道转换为代码的工具，对于希望进一步调整生成模型的数据科学家是一个好处。
+
+![](./Images/tpot.png)
+
+灰色区域用TPOT实现自动处理。实现该部分的自动处理需遗传算法。
+
+```bash
+# installing DEAP, update_checker and tqdm 
+pip install deap update_checker tqdm
+# installling TPOT 
+pip install tpot
+```
+
+用Big Mart Sales数据集（https://datahack.analyticsvidhya.com/contest/practice-problem-big-mart-sales-iii/）。先快速下载训练和测试文件：
+
+```python
+import numpy as np 
+import pandas as pd 
+import matplotlib.pyplot as plt 
+%matplotlib inline 
+from sklearn import preprocessing 
+from sklearn.metrics import mean_squared_error
+
+## preprocessing 
+### mean imputations 
+train['Item_Weight'].fillna((train['Item_Weight'].mean()), inplace=True)
+test['Item_Weight'].fillna((test['Item_Weight'].mean()), inplace=True)
+### reducing fat content to only two categories 
+train['Item_Fat_Content'] = train['Item_Fat_Content'].replace(['low fat','LF'], ['Low Fat','Low Fat']) 
+train['Item_Fat_Content'] = train['Item_Fat_Content'].replace(['reg'], ['Regular']) 
+test['Item_Fat_Content'] = test['Item_Fat_Content'].replace(['low fat','LF'], ['Low Fat','Low Fat']) 
+test['Item_Fat_Content'] = test['Item_Fat_Content'].replace(['reg'], ['Regular']) 
+train['Outlet_Establishment_Year'] = 2013 - train['Outlet_Establishment_Year'] 
+test['Outlet_Establishment_Year'] = 2013 - test['Outlet_Establishment_Year'] 
+
+train['Outlet_Size'].fillna('Small',inplace=True)
+test['Outlet_Size'].fillna('Small',inplace=True)
+
+train['Item_Visibility'] = np.sqrt(train['Item_Visibility'])
+test['Item_Visibility'] = np.sqrt(test['Item_Visibility'])
+
+col = ['Outlet_Size','Outlet_Location_Type','Outlet_Type','Item_Fat_Content']
+test['Item_Outlet_Sales'] = 0
+combi = train.append(test)
+for i in col:
+    combi[i] = number.fit_transform(combi[i].astype('str'))
+    combi[i] = combi[i].astype('object')
+train = combi[:train.shape[0]]
+test = combi[train.shape[0]:]
+test.drop('Item_Outlet_Sales',axis=1,inplace=True)
+
+## removing id variables 
+tpot_train = train.drop(['Outlet_Identifier','Item_Type','Item_Identifier'],axis=1)
+tpot_test = test.drop(['Outlet_Identifier','Item_Type','Item_Identifier'],axis=1)
+target = tpot_train['Item_Outlet_Sales']
+tpot_train.drop('Item_Outlet_Sales',axis=1,inplace=True)
+
+# finally building model using tpot library
+from tpot import TPOTRegressor
+X_train, X_test, y_train, y_test = train_test_split(tpot_train, target, train_size=0.75, test_size=0.25)
+
+tpot = TPOTRegressor(generations=5, population_size=50, verbosity=2)
+tpot.fit(X_train, y_train)
+print(tpot.score(X_test, y_test))
+tpot.export('tpot_boston_pipeline.py')
+```
+
+一旦代码运行完成，`tpot_exported_pipeline.py`将会放入用于路径优化的Python代码。`ExtraTreeRegressor`可最好解决这个问题：
+
+```python
+## predicting using tpot optimised pipeline
+tpot_pred = tpot.predict(tpot_test)
+sub1 = pd.DataFrame(data=tpot_pred)
+#sub1.index = np.arange(0, len(test)+1)
+sub1 = sub1.rename(columns = {'0':'Item_Outlet_Sales'})
+sub1['Item_Identifier'] = test['Item_Identifier']
+sub1['Outlet_Identifier'] = test['Outlet_Identifier']
+sub1.columns = ['Item_Outlet_Sales', 'Item_Identifier', 'Outlet_Identifier']
+sub1 = sub1[['Item_Identifier','Outlet_Identifier', 'Item_Outlet_Sales']]
+sub1.to_csv('tpot.csv', index=False)
+```
