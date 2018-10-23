@@ -6,6 +6,8 @@
     * [Convolutional Neural Network](/MachineLearning/cnn.md)
     * [CUDA](MachineLearning/cuda.md)
     * [Embedding](MachineLearning/embedding.md)
+    * [Generic Algorithm](MachineLearning/generic.md)
+    * [Logistic Regression](MachineLearning/logistic_regression.md)
     * [Deep Learning Framework](MachineLearning/dl_frameworks.md)
     * [Regularization](MachineLearning/regularization.md)
     * [Softmax](MachineLearning/softmax.md)
