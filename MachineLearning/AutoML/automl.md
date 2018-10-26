@@ -4,6 +4,74 @@
 
 
 
+## 神经网络进化
+----
+不管是遗传算法还是进化策略，都采取进化理论的某些重要部分。比如遗传算法有来自父母的两组神经网络，通过将两个神经网络交叉配对，产生宝宝神经网络。然后将宝宝神经网络变异获取新能力。最后将所有宝宝们适者生存。如果使用进化策略，先固定神经网络结构。让这个结构蚕卵，生出很多和原始神经网络结构相同，但联结强度不同的网络。这些宝宝网络中有好有坏，进化策略中下一代爸爸是所有宝宝的综合体。这个综合体中，好宝宝联结占更多比例，坏宝宝占更少比例。通过这种形式，让好宝宝渐渐主宰生存环境。
+
+反向传播和靠计算梯度的神经网络适合监督学习。这方面，使用进化理论的神经网络暂时比不上梯度神经网络。
+
+梯度下降中，需要的只是梯度。因为梯度指明优化方向。所以如果是监督学习，优化非常快。而神经网络进化使用是另一种手段。用原始点创造出很多新点，通过新点确定下一代起点在哪。循环再不断继续。如果在监督学习，需不断产生非常多新网络，测试新网络，比梯度法慢。但不使用梯度法好处是有效避免局部最优。此外，因为涉及很多宝宝，可将宝宝利用计算机并行能力有效计算。
+
+1. 固定神经网络形态 (Topology)，改变参数 (weight)：
+
+    通过不断尝试变异，修改链接中间weight，改变神经网络预测结果，保留预测结果更准确的。OpenAI在2017年将进化策略 (Evolution Strategy) 衍生到神经网络，不断进化神经网络参数。实验结果够媲美强化学习方法，比如Q-learning和Policy Gradient。
+
+2. 修改参数和形态：
+
+    除了参数，形态能改变。NEAT算法是这种。因为能变化形态，所以在NEAT中，不存在神经层。
+
+<br></br>
+
+
+
+## NEAT算法
+---- 
+> * [Evolving Neural Networks through Augmenting Topologies](http://nn.cs.utexas.edu/downloads/papers/stanley.ec02.pdf)
+> * [Efficient Evolution of Neural Network Topologies](http://nn.cs.utexas.edu/downloads/papers/stanley.cec02.pdf)
+
+典型的遗传算法，步骤：
+1. 使用创新号码（Innovation ID）对神经网络直接编码（direct coding）。
+2. 根据Innovation ID交叉配对（crossover）。
+3. 对神经元（node），神经链接（link）进行基因突变（mutation）。
+4. 保留生物多样性（Speciation）。比如，不好的网络突然变异成厉害的。
+5. 通过初始化只有input连着output的神经网络减小神经网络大小。即从最小的神经网络结构开始发展。
+
+![](./Images/neat1.png)
+
+上图可想象成如何通过DNA（图中Genome）编译神经网络。Node genes是神经网络每个节点的定义。`Connect.Genes`是对每个节点与节点链接是什么样的形式，从输入节点In到输出节点Out，这个链接参数 (weight) 是多少。输出节点的值是`Out = In * weight`。这条链接是要被使用 (Enabled) 还是不被使用 (DISABE)。最后是这条链接专属的创新号。
+
+通过上面Genome能搭建出神经网络。可看出有一个2-5 DISAB链接，原因是在2-5之间已变异出一个4节点。所以2-5通过4相链接。需将原来2-5链接disable。
+
+![](./Images/neat2.png)
+
+变异可以有节点变异和链接变异。如果新加的节点像6在原链接上的突变节点，那么原来的3-5链接要被disable。
+
+![](./Images/neat3.png)
+
+关于crossover，两个父母通过创新号对齐，双方都有的innovation随机选一个。如果双方有对方没有的Innovation，直接全部遗传给后代.
+
+图上出现disjoint和excess基因，是因为如果要区分种群不同度，来选择要保留的种群时，需通过这个计算。
+
+<br></br>
+
+
+
+## 进化策略与神经网络
+----
+Evolution Strategy较于Genetic Algorithm更加注重mutation，且其中使用正态分布。OpenAI提出的能替代强化学习的ES可终结如下：
+1. 固定神经网络结构。
+2. 使用正态分布来扰动（perturb）神经网络链接参数。
+3. 使用扰动的网络在环境中收集奖励。
+4. 用奖励或效用诱导参数更新幅度。
+
+![](./Images/opeai_es.png)
+
+如果是找到图中最红地方，ES是在自己周围随机繁殖后代。有些后代会靠近红色地方，有些不会。修改ES神经网络参数，让它更像好后代参数。
+
+<br></br>
+
+
+
 ## Feature Engineering
 ----  
 ### feature-tools  
