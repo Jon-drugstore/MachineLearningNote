@@ -11,9 +11,11 @@
     * [Regularization](MachineLearning/regularization.md)
     * [Softmax](MachineLearning/softmax.md)
     * [Evolutionary Algorithm]()
+        * [Evolution Strategy](MachineLearning/Evolutionary/evolution_strategy.md)
         * [Generic Algorithm](MachineLearning/Evolutionary/generic_algorithm.md)
     * [Theory]()
         * [Statistics](MachineLearning/Theory/statistics.md)
+
 
 * [Machine Learning@Coursera]()
     * [Week 1](/ML_Coursera_Andrew/Week1/week1.md)

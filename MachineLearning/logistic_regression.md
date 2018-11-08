@@ -14,8 +14,9 @@ $$
 
 where
 * $$y$$ is the output of logistic regression model for a particular example.
-* $$z$$ is $$b + w_{1}x_{1} + w_{2}x_{2} + ... + w_{n}x_{n}$$. $$w$$ is the model's learned weights and bias. $$x$$ is the feature values for a particular example.
-* 
+* $$z$$ is $$b + w_{1}x_{1} + w_{2}x_{2} + ... + w_{n}x_{n}$$.
+* $$w$$ is the model's learned weights and bias.
+* $$x$$ is the feature values for a particular example.
 
 If $$z$$ represents the output of linear layer of a model trained with logistic regression, then sigmoid(z) will yield a value (a probability) between 0 and 1. 
 

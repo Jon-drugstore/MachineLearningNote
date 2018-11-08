@@ -131,7 +131,7 @@ $$
 ----
 ![](./Images/1_5_successful_rule.png)
 
-`mut_strength`可以采用1/5 successful rule。还没收敛时候（左图），增大`mut_strength。如果快收敛（右图），减小`mut_strength`。判断是否快收敛规则是如果有1/5的变异比原始parent好，就是快收敛。
+`mut_strength`可以采用1/5 successful rule。还没收敛时候（左图），增大`mut_strength`。如果快收敛（右图），减小`mut_strength`。判断是否快收敛规则是如果有1/5的变异比原始parent好，就是快收敛。
 
 ![](./Images/1_5_successful_rule_equation.png)
 

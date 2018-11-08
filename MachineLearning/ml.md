@@ -22,7 +22,7 @@
 
 
 
-## Artificial Intelligence vs Machine Learning vs Deep Learning
+## AI vs ML vs DL
 ----
 <p align="center">
   <img src="./Images/ml4.png" width = "700"/>
@@ -40,32 +40,6 @@
 <br>
 
 
-### Data Dependencies
-When the data is small, Deep Learning doesn’t perform that well. On the other hand, traditional Machine Learning with their handcrafted rules prevail in this scenario.
-
-<p align="center">
-  <img src="./Images/ml1.png" width = "600"/>
-</p>
-
-<br>
-
-
-### Hardware Dependencies
-Deep Learning heavily depend on high-end machines, contrary to traditional Machine Learning, which can work on low-end machines. Deep Learning inherently do a large amount of matrix multiplication operations. These operations can be efficiently optimized using a GPU because GPU is built for this purpose.
-
-<br>
-
-
-### Feature Engineering
- > Feature engineering is a process of putting domain knowledge into the creation of feature extractors to reduce the complexity of the data and make patterns more visible to learning algorithms to work.
-
-In Machine Learning, most of the applied features need to be identified by an expert and then hand-coded as per the domain and data type.
-
-Deep Learning try to learn high-level features from data. **This is a very distinctive part of Deep Learning and a major step ahead of traditional Machine Learning.**
-
-<br>
-
-
 ### Problem Solving Approach
 When solving a problem using traditional Machine Learning, it is generally recommended to break the problem down into different parts, solve them individually and combine them to get the result. Deep Learning in contrast advocates to solve the problem end-to-end.
 
@@ -77,7 +51,7 @@ When solving a problem using traditional Machine Learning, it is generally recom
 
 
 ### Interpretability
-Let’s take an example. Suppose we use Deep Learning to give automated scoring to essays. The performance it gives is near human performance. But it does not reveal why it has given that score. Indeed mathematically you can find out which nodes of a deep neural network were activated, but we don’t know what there neurons were supposed to model and what these layers of neurons were doing collectively. So we fail to interpret the results.
+Suppose we use Deep Learning to give automated scoring to essays. The performance it gives is near human performance. But it does not reveal why it has given that score. Indeed mathematically you can find out which nodes of a deep neural network were activated, but we don’t know what there neurons were supposed to model and what these layers of neurons were doing collectively. So we fail to interpret the results.
 
 On the other hand, Machine Learning like decision trees give us crisp rules as to why it chose what it chose, so it is particularly easy to interpret the reasoning behind it. Therefore, algorithms like decision trees and linear/logistic regression are primarily used in industry for interpretability.
 
@@ -89,12 +63,12 @@ On the other hand, Machine Learning like decision trees give us crisp rules as t
 ----
 GPU好处：
 1. 显示芯片有更大内存带宽。例如GeForce 8800GTX有50GB/s内存带宽，高阶CPU内存带宽在10GB/s。
-2. 显示芯片有更大量执行单元。例如GeForce 8800GTX有128个 "stream processors"，频率为1.35GHz。CPU频率通常较高，但执行单元数目要少。
+2. 显示芯片有更大量执行单元。例如GeForce 8800GTX有128个stream processors，频率为1.35GHz。CPU频率通常较高，但执行单元数目要少。
 
 GPU缺点：
 1. 显示芯片运算单元数量很多，因此对于不能高度并行化工作，带来的帮助不大。
-2. 显示芯片通常只支持32 bits浮点数，且多半不能完全支持IEEE 754规格，有些运算精确度较低。目前许多显示芯片没有分开整数运算单元，因此整数运算效率差。
-3. 显示芯片通常不具有分支预测等复杂流程控制单元，因此对于具有高度分支的程序，效率差。
+2. 显示芯片通常只支持32 bits浮点数，且多半不能完全支持IEEE 754规格。许多显示芯片没有分开整数运算单元，因此整数运算效率差。
+3. 显示芯片不具有分支预测等复杂流程控制单元，对高度分支的程序，效率差。
 
 由于显示芯片大量并行计的特性，它处理问题方式和CPU不同：
 1. 内存存取latency问题：CPU使用cache解决。GPU没有cache或很小，所以用并行化执行方式隐藏内存latency。即当第一个进程需等待内存读取结果时，则开始执行第二个进程，依此类推。
@@ -163,27 +137,6 @@ Figure illustrates a one-hot encoding of a particular street: Shorebird Way. The
 
 ![](./Images/one_hot_encoding.svg)
 
-<br>
-
-
-### Qualities of Good Features
-* Avoid rarely used discrete feature values.
-
-  Good feature values should appear more than 5 or so times in a data set. For example, `unique_house_id` is a bad feature because each value would be used only once, so the model couldn't learn anything from it.
-
-* Prefer clear and obvious meanings.
-
-* Don't mix "magic" values with actual data
-
-  Take `quality_rating` as an example, both values 0.82 and 0.37 are fine. If a user didn't enter a `quality_rating`, perhaps the data set represented its absence with a magic value like -1. To work with it, we need to convert the feature into two features:
-
-  1. One feature holds only quality ratings, never magic values.
-  2. One feature holds a boolean value indicating whether or not a `quality_rating` was supplied. Give this boolean feature a name like `is_quality_rating_defined`.
-
-*  Account for upstream instability.
-
-  The definition of a feature shouldn't change over time. For example, `city_id: "br/sao_paulo"` is good.
-
 <br></br>
 
 
@@ -197,7 +150,7 @@ This is a linear problem.
 
 But this is not.
 
-![](./Images/feature_corsses2.png)
+![](./Images/feature_crosses2.png)
 
 To solve it, create a feature cross. **A feature cross is a synthetic feature that encodes nonlinearity in the feature space by multiplying two or more input features together.** Create a feature cross named $$x_{3}$$ by crossing $$x_{1}$$ and $$x_{2}$$:
 
@@ -241,9 +194,3 @@ Model can now learn completely different weights for each latitude.
 Another approach is to bin by quantile, which ensures that the number of examples in each bucket is equal. Binning by quantile completely removes the need to worry about outliers.
 
 <br></br>
-
-
-
-## Others
-----
-![](./Images/overfitting_all.jpg)
