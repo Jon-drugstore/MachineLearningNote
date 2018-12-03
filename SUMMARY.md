@@ -8,6 +8,7 @@
     * [Embedding](MachineLearning/embedding.md)
     * [Logistic Regression](MachineLearning/logistic_regression.md)
     * [Deep Learning Framework](MachineLearning/dl_frameworks.md)
+    * [Improve Model Performance](MachineLearning/model_performance.md)
     * [Regularization](MachineLearning/regularization.md)
     * [Softmax](MachineLearning/softmax.md)
     * [Evolutionary Algorithm]()
