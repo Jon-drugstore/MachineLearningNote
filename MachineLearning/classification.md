@@ -102,7 +102,9 @@ $$
 
 An ROC curve plots TPR vs. FPR at different classification thresholds. Lowering the classification threshold classifies more items as positive, thus increasing both False Positives and True Positives.
 
-![](./Images/roc1.svg)
+<p align="center">
+  <img src="./Images/roc1.svg" width = "400"/>
+</p>
 
 To compute the points in an ROC curve, we could evaluate a logistic regression model many times with different classification thresholds, but this would be inefficient. Fortunately, there's an efficient, sorting-based algorithm that can provide this information, called AUC.
 
@@ -112,7 +114,9 @@ To compute the points in an ROC curve, we could evaluate a logistic regression m
 
 ## AUC
 ----
-![](./Images/auc1.svg)
+<p align="center">
+  <img src="./Images/auc1.svg" width = "400"/>
+</p>
 
 One way of interpreting AUC is as the probability that the model ranks a random positive example more highly than a random negative example. For example, given the following examples, which are arranged from left to right in ascending order of logistic regression predictions:
 

@@ -57,9 +57,7 @@ More typically the vector might contain counts of the words in a larger chunk of
 
 But however we determine the non-zero values, one-node-per-word gives us very sparse input vectors—very large vectors with relatively few non-zero values. Sparse representations have a couple of problems that can make it hard for a model to learn effectively.
 
-One proble is it is lack of meaningful relations between vectors:
-
-    If you feed the pixel values of RGB channels into an image classifier, it makes sense to talk about "close" values. Reddish blue is close to pure blue. But a vector with a 1 at index 1247 for "horse" is not any closer to a vector with a 1 at index 50,430 for "antelope" than it is to a vector with a 1 at index 238 for "television".
+One proble is it is lack of meaningful relations between vectors. For example, if you feed the pixel values of RGB channels into an image classifier, it makes sense to talk about "close" values. Reddish blue is close to pure blue. But a vector with a 1 at index 1247 for "horse" is not any closer to a vector with a 1 at index 50,430 for "antelope" than it is to a vector with a 1 at index 238 for "television".
 
 <br></br>
 

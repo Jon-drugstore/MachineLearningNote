@@ -99,7 +99,7 @@ $$
 假要预测的不是一个值，是一个向量，如$$[2,3]$$，那么输出层增加一个输出单元。
 
 <p align="center">
-  <img src="./Images/ann5.jpg" width = "600"/>
+  <img src="./Images/ann5.jpg" width = "400"/>
 </p>
 
 <center><i>单层神经网络</i></center>
@@ -109,7 +109,7 @@ $$
 可看到，$$z_1$$计算跟原先_z_没有区别。$$z_2$$计算中除三个新的权值$$w_4$$，$$w_5$$和$$w_6$$外，其他与$$z_1$$一样。改用二维下标，用$$w_{x,y}$$表达权值。_x_代表后一层神经元序号，_y_代表前一层神经元的序号。例如，$$$w_{1,2}$$代表后一层第1个神经元与前一层第2个神经元的连接的权值。
 
 <p align="center">
-  <img src="./Images/ann6.jpg" width = "600"/>
+  <img src="./Images/ann6.jpg" width = "400"/>
 </p>
 
 <center><i>单层神经网络（扩展）</i></center>
@@ -134,7 +134,7 @@ $$
 > 其中，$$a_x^{(y)}$$代表第_y_层的第_x_个节点。
 
 <p align="center">
-  <img src="./Images/ann7.jpg" width = "600"/>
+  <img src="./Images/ann7.jpg" width = "400"/>
 </p>
 
 <center><i>两层神经网络（中间层计算）</i></center>
@@ -144,7 +144,7 @@ $$
 计算最终输出_z_是用中间层$$a_1^{(2)}$$，$$a_2^{(2)}$$和第二个权值矩阵计算得到的：
 
 <p align="center">
-  <img src="./Images/ann8.jpg" width = "600"/>
+  <img src="./Images/ann8.jpg" width = "400"/>
 </p>
 
 <center><i>两层神经网络（输出层计算）</i></center>
@@ -156,7 +156,7 @@ $$
 偏置节点默认存在，本质上是一个只含有存储功能，且存储值永远为1的单元。在神经网络的每个层次中，除了输出层外，都含有一个偏置单元。
 
 <p align="center">
-  <img src="./Images/ann9.jpg" width = "600"/>
+  <img src="./Images/ann9.jpg" width = "200"/>
 </p>
 
 <center><i>两层神经网络（考虑偏置节点）</i></center>
@@ -182,7 +182,7 @@ $$
 The output is computed by multiplying input _x_ by weight $$w_0$$ and passing result through activation function:
 
 <p align="center">
-  <img src="./Images/ann11.png" width = "600"/>
+  <img src="./Images/ann11.png" width = "400"/>
 </p>
 
 Changing weight $$w_0$$ essentially changes the "steepness" of the sigmoid. That's useful, but what if you wanted to output 0 when _x_ is 2? Just changing steepness of sigmoid won't really work -- you want to be able to shift entire curve to right.
@@ -198,7 +198,7 @@ That's exactly what bias to do. If we add a bias, like so:
 Output becomes $$sig(w_0*x + w_1*1.0)$$. Here is what the output looks like for various values of $$w_1$$:
 
 <p align="center">
-  <img src="./Images/ann13.png" width = "600"/>
+  <img src="./Images/ann13.png" width = "400"/>
 </p>
 
 <br>
@@ -208,7 +208,7 @@ Output becomes $$sig(w_0*x + w_1*1.0)$$. Here is what the output looks like for 
 与单层神经网络不同，理论证明，两层神经网络可无限逼近任意连续函数。即，面对复杂非线性分类任务，两层神经网络分类的很好。
 
 <p align="center">
-  <img src="./Images/ann14.png" width = "600"/>
+  <img src="./Images/ann14.png" width = "400"/>
 </p>
 
 <center><i>两层神经网络（决策分界）</i></center>
@@ -220,7 +220,7 @@ Output becomes $$sig(w_0*x + w_1*1.0)$$. Here is what the output looks like for 
 把输出层决策分界单独拿出来看：
 
 <p align="center">
-  <img src="./Images/ann15.png" width = "600"/>
+  <img src="./Images/ann15.png" width = "400"/>
 </p>
 
 <center><i>两层神经网络（空间变换）</i></center>
@@ -241,7 +241,7 @@ Output becomes $$sig(w_0*x + w_1*1.0)$$. Here is what the output looks like for 
 可看出$$W^{(1)}$$有6个参数，$$W^{(2)}$$有4个参数，$$ W^{(3)}$$有6个参数，所以整个神经网络中参数有16个（不考虑偏置节点）。
 
 <p align="center">
-  <img src="./Images/ann16.jpg" width = "600"/>
+  <img src="./Images/ann16.jpg" width = "400"/>
 </p>
 
 <center><i>多层神经网络（较少参数）</i></center>
@@ -251,7 +251,7 @@ Output becomes $$sig(w_0*x + w_1*1.0)$$. Here is what the output looks like for 
 将中间层节点数做一下调整。第一个中间层改为3个单元，第二个中间层改为4个单元。调整后，整个网络参数变成33个。
 
 <p align="center">
-  <img src="./Images/ann17.jpg" width = "600"/>
+  <img src="./Images/ann17.jpg" width = "400"/>
 </p>
 
 <center><i>多层神经网络（较多参数）</i></center>
@@ -261,7 +261,7 @@ Output becomes $$sig(w_0*x + w_1*1.0)$$. Here is what the output looks like for 
 虽然层数不变，但第二个神经网络参数数量是第一个两倍，从而带来了更好的表示能力。在参数一致的情况下，可以获得一个“更深”的网络：
 
 <p align="center">
-  <img src="./Images/ann18.jpg" width = "600"/>
+  <img src="./Images/ann18.jpg" width = "400"/>
 </p>
 
 <center><i>多层神经网络（更深的层次）</i></center>

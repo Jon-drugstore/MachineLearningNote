@@ -88,9 +88,7 @@ Make sure test set meets the following two conditions:
 1. Is large enough to yield statistically meaningful results?
 2. Is representative of the data set as a whole? In other words, don't pick a test set with different characteristics than the training set.
 
-Never train on test data. If seeing surprisingly good results on evaluation metrics, it might be a sign that you are accidentally training on test set. For example, high accuracy might indicate that test data has leaked into training set.
-
-For example, consider a model that predicts whether an email is spam, using the subject line, email body, and sender's email address as features. We apportion the data into training and test sets, with an 80-20 split. After training, the model achieves 99% precision on both the training set and the test set. Take a look at the data and discover that many of the examples in the test set are duplicates of examples in the training set.
+Never train on test data. If seeing surprisingly good results on evaluation metrics, it might be a sign that you are accidentally training on test set.
 
 Partition data set:
 
@@ -146,11 +144,15 @@ Figure illustrates a one-hot encoding of a particular street: Shorebird Way. The
 ### Encoding Nonlinearity
 This is a linear problem.
 
-![](./Images/feature_crosses1.png)
+<p align="center">
+  <img src="./Images/feature_crosses1.png" width = "400"/>
+</p>
 
 But this is not.
 
-![](./Images/feature_crosses2.png)
+<p align="center">
+  <img src="./Images/feature_crosses2.png" width = "400"/>
+</p>
 
 To solve it, create a feature cross. **A feature cross is a synthetic feature that encodes nonlinearity in the feature space by multiplying two or more input features together.** Create a feature cross named $$x_{3}$$ by crossing $$x_{1}$$ and $$x_{2}$$:
 

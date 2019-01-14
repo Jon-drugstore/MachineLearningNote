@@ -1,11 +1,5 @@
 # <center>How to Improve Model Performance</center> 
 
-
-
-<br></br>
-
-本文探讨了一些可用于在内存受限的配置下部署神经网络的技术。
-
 <br></br>
 
 
@@ -56,7 +50,7 @@ DenseNet中的参数效率高，但内存效率低。原因是DenseNet拼接结�
 
 
 ### 牺牲浮点数精度
-![博客](https://petewarden.com/2015/05/23/why-are-eight-bits-enough-for-deep-neural-networks/)解释了如何使用8比特浮点数训练神经网络。但由于浮点数精度降低，产生许多问题。
+[博客](https://petewarden.com/2015/05/23/why-are-eight-bits-enough-for-deep-neural-networks/)解释了如何使用8比特浮点数训练神经网络。但由于浮点数精度降低，产生许多问题。
 
 如[论文](https://arxiv.org/pdf/1412.7024.pdf)所述，激活函数、梯度和参数取值范围大不相同。用一个固定点表示的方式不理想。论文表示，可设一个“动态固定点”表示，对低浮点数精度神经网络有效。
 
