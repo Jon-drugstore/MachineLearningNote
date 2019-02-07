@@ -19,6 +19,7 @@
 
 
 * [Machine Learning@Coursera]()
+    * [Background](/ML_Coursera_Andrew/Background/background.md)
     * [Week 1](/ML_Coursera_Andrew/Week1/week1.md)
         * [Model Representation and Cost Function](/ML_Coursera_Andrew/Week1/model_cost.md)
         * [Gradient Descent](/ML_Coursera_Andrew/Week1/gradient_descent.md)
