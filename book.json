@@ -1,7 +1,6 @@
 {
     "author": "Jinghua Zhu",
     "title": "Machine Learning Knowledge Note",
-    
     "plugins": [
         "mathjax",
     	"anchors",
@@ -13,7 +12,6 @@
         "expandable-chapters",
         "search"
     ],
-
     "pluginsConfig": {
     	"mathjax":{
             "forceSVG": false
@@ -24,7 +22,6 @@
             "modify_format": "DD-MM-YYYY"
         }
   	},
-
     "pdf": {
         "toc": false,
         "fontSize": 12,

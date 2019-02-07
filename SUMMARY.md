@@ -20,8 +20,9 @@
 
 * [Machine Learning@Coursera]()
     * [Background](/ML_Coursera_Andrew/Background/background.md)
+    * [Linear Regression](/ML_Coursera_Andrew/LinearRegression/lr.md)
+        * [Linear Regression with One Variable](/ML_Coursera_Andrew/LinearRegression/one_var.md)
     * [Week 1](/ML_Coursera_Andrew/Week1/week1.md)
-        * [Model Representation and Cost Function](/ML_Coursera_Andrew/Week1/model_cost.md)
         * [Gradient Descent](/ML_Coursera_Andrew/Week1/gradient_descent.md)
 
     * [Week 2](/ML_Coursera_Andrew/Week2/week2.md)
