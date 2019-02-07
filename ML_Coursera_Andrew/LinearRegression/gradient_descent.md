@@ -4,17 +4,30 @@
 
 
 
-Imagine that we graph our hypothesis function based on its fields $$\theta_0$$ and $$\theta_1$$. We are not graphing $$x$$ and $$y$$ itself, but the parameter range of our hypothesis function and the cost resulting from selecting a particular set of parameters. We put $$\theta_0$$ on $$x$$ axis and $$\theta_1$$ on $$y$$ axis, with the cost function on vertical $$z$$ axis. The points on our graph will be the result of the cost function using our hypothesis with those specific $$\theta$$ parameters.
+## Why
+----
+在特征量很大情况下，即便生成图像，人工也很难读出$$J(\theta)$$最小值，且多数情况无法可视化，故引入梯度下降（Gradient Descent），让计算机自动找出最小化代价函数时对应的$$\theta$$值。
 
 <p align="center">
-  <img src="./Images/gd1.png" width = "550"/>
+  <img src="./Images/gd6.png" width = "400"/>
 </p>
 
-We will know that we have succeeded when our cost function is at the very bottom of the pits in graph.
+<br></br>
 
-The way we do this is by taking the derivative of cost function. The slope of the tangent is the derivative at that point and it will give us a direction to move towards. We make steps down the cost function in the direction with the steepest descent. The size of each step is determined by the parameter $$\alpha$$, which is called **learning rate**.
 
-For example, the distance between each 'star' represents a step determined by parameter $$\alpha$$. The direction is determined by the partial derivative of $$\mathit{J}(\theta_0, \theta_1)$$. Depending on where one starts on graph, one could end up at different points. 
+
+## How
+----
+梯度下降思想是：
+1. 开始时，随机选择一个参数组合$$( {\theta_{0}},{\theta_{1}},......,{\theta_{n}} )$$作为起始点，计算代价函数。
+2. 然后寻找下一个使得代价函数下降最多的参数组合。
+3. 不断迭代，直到找到一个局部最小值。
+
+**注意，由于下降情况只考虑当前参数组合，所以无法确定当前局部最小值是否是全局最小值。不同初始参数组合，可能产生不同的局部最小值：**
+
+<p align="center">
+  <img src="./Images/gd1.jpg" width = "550"/>
+</p>
 
 **The gradient descent algorithm is to repeat until convergence:**
 
@@ -24,21 +37,45 @@ $$
 
 where $$j = 0, 1$$ represents the feature index number.
 
-At each iteration _j_, one should simultaneously update the parameters $$\theta_1$$, $$\theta_2$$, ..., $$\theta_n$$. Updating a specific parameter prior to calculating another one on the j(th) iteration would yield to a wrong implementation. 
+计算时要**批量更新$$\theta$$值**，否则结果上有所出入。
 
 <p align="center">
   <img src="./Images/gd2.png" width = "550"/>
 </p>
 
-<br>
+<br></br>
 
+
+
+## Learning Rate
+----
+We make steps down the cost function in the direction with the steepest descent. The size of each step is determined by the parameter $$\alpha$$, which is called **learning rate**.
+
+> 学习速率决定参数值变化速率，即“走多少距离”。偏导部分决定下降方向，即“下一步往哪走”。
+
+For example, the distance between each 'star' represents a step determined by parameter $$\alpha$$. The direction is determined by the partial derivative of $$\mathit{J}(\theta_0, \theta_1)$$. Depending on where one starts on graph, one could end up at different points. 
+
+**Hyperparameters** are the knobs that programmers tweak in machine learning algorithms. If a learning rate is too small, learning will take too long. Conversely, if a learning rate is too large, the next point will perpetually bounce haphazardly across the bottom of the well like a quantum mechanics experiment gone horribly wrong.
+
+<p align="center">
+  <img src="./Images/learning_rate1.svg" width = "400"/>
+</p>
+
+<p align="center">
+  <img src="./Images/learning_rate2.svg" width = "400"/>
+</p>
+
+<br></br>
+
+
+
+## Deep Understanding
+----
 Regardless of the slope's sign for $$\frac{\partial}{\partial \theta_j} \text{J}(\theta_1)$$, $$\theta_1$$ eventually converges to its minimum value. The following graph shows that when the slope is negative, the value of $$\theta_1$$ increases and when it is positive, the value of $$\theta_1 $$decreases.
 
 <p align="center">
   <img src="./Images/gd3.png" width = "550"/>
 </p>
-
-<br>
 
 We should adjust parameter $$\alpha$$ to ensure that the gradient descent converges in a reasonable time. 
 
@@ -46,36 +83,69 @@ We should adjust parameter $$\alpha$$ to ensure that the gradient descent conver
   <img src="./Images/gd4.png" width = "550"/>
 </p>
 
-<br>
-
-The intuition behind the convergence is that $$\frac{\partial}{\partial \theta_j} \mathrm{J}(\theta_1)$$ approaches $$0$$ as we approach the bottom of convex function. At the minimum, the derivative will always be $$0$$ and thus we get: 
-
-$$
-\theta_1 := \theta_1 - \alpha \times 0
-$$
+学习速率只需选定即可，不需运行时动态改变。随着斜率接近0，代价函数变化幅度会越小，直到收敛局部极小值：
 
 <p align="center">
   <img src="./Images/gd5.png" width = "550"/>
 </p>
 
-<br>
-
-When specifically applied to the case of linear regression, a new form of the gradient descent equation can be derived. We can substitute actual cost function and actual hypothesis function and modify the equation to (repeat until convergence):
-
-$$
-\theta_0 := \theta_0 -\alpha \frac{1}{m} \sum_{i=1}^{m}(h_\theta{x_i}-y_i)
-$$
-
-$$
-\theta_1 := \theta_1 -\alpha \frac{1}{m} \sum_{i=1}^{m}((h_\theta{x_i}-y_i)x_i)
-$$
+<br></br>
 
 
-where _m_ is the size of the training set, $$ \theta_0 $$ is a constant that will be changing simultaneously with $$ \theta_1 $$ and $$ x_i $$, $$ y_i $$ are values of the given training set. 
+
+## Gradient Descent For Linear Regression
+----
+<p align="center">
+  <img src="./Images/gd7.png" width = "550"/>
+</p>
+
+将线性回归模型公式代入梯度下降公式可得：
+
+<p align="center">
+  <img src="./Images/gd8.png" width = "550"/>
+</p>
+
+当$$j=0, j=1​$$时，线性回归代价函数求导推导过程为：
 
 $$
-\frac{\partial}{\partial \theta_j}\text{J}(\theta) = \frac{\partial}{\partial \theta_j}\frac{1}{2}(\text{h}_\theta(x)-y)^2 = (\text{h}_\theta(x)-y)x_j
+\begin{split}
+\frac{\partial}{\partial\theta_j}J(\theta_1,\theta_2) &= \frac{\partial}{\partial\theta_j}(\frac{1}{2m}\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})^{2}) \\
+&= (\frac{1}{2m} * 2\sum\limits_{i=1}^{m}(h_{\theta}(x^{(i)})-y^{(i)})) * \frac{\partial}{\partial\theta_j}(h_{\theta}(x^{(i)})-y^{(i)}) \\
+&= (\frac{1}{m} * \sum\limits_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)})) * \frac{\partial}{\partial\theta_j} (\theta_0{x_0^{(i)}} + \theta_1{x_1^{(i)}} - y^{(i)})
+\end{split}
 $$
+
+所以当$$j=0$$时：
+
+$$
+\frac{\partial}{\partial\theta_0} J(\theta) = \frac{1}{m} \sum\limits_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)}) * x_{0}^{(i)}
+$$
+
+所以当$$j=1$$时：
+
+$$
+\frac{\partial}{\partial\theta_1} J(\theta) = \frac{1}{m} \sum\limits_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)}) * x_{1}^{(i)}
+$$
+
+上文提到的梯度下降都为**批量梯度下降（Batch Gradient Descent）**，即每次计算都使用所有数据集$$\left(\sum\limits_{i=1}^{m}\right)​$$。
+
+由于线性回归函数是凸函数，呈现碗状，即只有一个全局最优值，所以函数定会收敛到全局最小值（学习速率不可过大）。所以，线性回归函数求最小值属于凸函数优化问题。
+
+<p align="center">
+  <img src="./Images/gd9.png" width = "400"/>
+</p>
+
+<p align="center">
+  <img src="./Images/gd10.png" width = "400"/>
+</p>
+
+<p align="center">
+  <img src="./Images/gd11.png" width = "400"/>
+</p>
+
+<p align="center">
+  <img src="./Images/gd12.png" width = "400"/>
+</p>
 
 <br></br>
 
@@ -143,7 +213,3 @@ The gradient always points in the direction of steepest increase in the loss fun
 ----
 As noted, the gradient vector has both a direction and a magnitude. Gradient descent algorithms multiply the gradient by a scalar known as the **learning rate (step size)** to determine next point. For example, if the gradient magnitude is 2.5 and the learning rate is 0.01, then the gradient descent algorithm will pick the next point 0.025 away from the previous point.
 
-**Hyperparameters** are the knobs that programmers tweak in machine learning algorithms. If a learning rate is too small, learning will take too long. Conversely, if a learning rate is too large, the next point will perpetually bounce haphazardly across the bottom of the well like a quantum mechanics experiment gone horribly wrong.
-
-![](./Images/learning_rate1.svg)
-![](./Images/learning_rate2.svg)

@@ -1,4 +1,4 @@
-# <center>Model Representation and Cost Function</center>
+# <center>Linear Regression</center>
 
 <br></br>
 
@@ -76,7 +76,7 @@ $$
 \theta_j := \theta_j - \alpha \sum_{i=0}^{m}(h_\theta(x^i)-y^i)x_j^i \tag 7
 $$
 
-其中$$ \alpha $$是学习速率。运用该规则直至收敛，即为**批梯度下降算法（batch gradient descent）**。收敛的判断有两种规则：
+其中$$\alpha$$是学习速率。运用该规则直至收敛，即为**批梯度下降算法（batch gradient descent）**。收敛的判断有两种规则：
 1. 判断两次迭代后参数变化
 2. 判断两次迭代后目标函数变化
 

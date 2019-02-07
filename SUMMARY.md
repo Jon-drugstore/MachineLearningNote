@@ -22,13 +22,10 @@
     * [Background](/ML_Coursera_Andrew/Background/background.md)
     * [Linear Regression](/ML_Coursera_Andrew/LinearRegression/lr.md)
         * [Linear Regression with One Variable](/ML_Coursera_Andrew/LinearRegression/one_var.md)
-    * [Week 1](/ML_Coursera_Andrew/Week1/week1.md)
-        * [Gradient Descent](/ML_Coursera_Andrew/Week1/gradient_descent.md)
-
+        * [Gradient Descent](/ML_Coursera_Andrew/LinearRegression/gradient_descent.md)
     * [Week 2](/ML_Coursera_Andrew/Week2/week2.md)
         * [Multiple Features](/ML_Coursera_Andrew/Week2/mult_features.md)
         * [Normal Equation](/ML_Coursera_Andrew/Week2/normal_equation.md)
-
     * [Week 3]()
         * [Classification and Representation](/ML_Coursera_Andrew/Week3/classification.md)
         * [Logistic Regression Model](/ML_Coursera_Andrew/Week3/logistic_regression.md)
