@@ -24,6 +24,7 @@
         * [One Variable](/ML_Coursera_Andrew/LinearRegression/one_var.md)
         * [Gradient Descent](/ML_Coursera_Andrew/LinearRegression/gradient_descent.md)
         * [Multiple Variables](/ML_Coursera_Andrew/LinearRegression/mult_var.md)
+        * [Features and Polynomial Regression](/ML_Coursera_Andrew/LinearRegression/features.md)
     * [Week 2](/ML_Coursera_Andrew/Week2/week2.md)
         * [Normal Equation](/ML_Coursera_Andrew/Week2/normal_equation.md)
     * [Week 3]()
