@@ -151,15 +151,31 @@ $$
 
 
 
-## Stochastic Gradient Descent
+## Stochastic Gradient Descent 随机梯度下降
 ----
 In gradient descent, a batch is the total number of examples you use to calculate the gradient in a single iteration. So far, we've assumed that the batch has been the entire data set. A very large batch may cause even a single iteration to take a very long time to compute.
 
 A large data set with randomly sampled examples probably contains redundant data. In fact, redundancy becomes more likely as the batch size grows. Some redundancy can be useful to smooth out noisy gradients, but enormous batches tend not to carry much more predictive value than large batches.
 
-By choosing examples at random from data set, we could estimate a big average from a much smaller one. **Stochastic gradient descent (SGD)** takes this idea to the extreme--it uses only a single example (a batch size of 1) per iteration. Given enough iterations, SGD works but is very noisy. The term "stochastic" indicates that the one example comprising each batch is chosen at random.
+By choosing examples at random from data set, we could estimate a big average from a much smaller one. **Stochastic gradient descent (SGD)** takes this idea to the extreme -- it uses only a single example (a batch size of 1) per iteration. Given enough iterations, SGD works but is very noisy. The term "stochastic" indicates that the one example comprising each batch is chosen at random.
 
 **Mini-batch stochastic gradient descent (mini-batch SGD)** is a compromise between full-batch iteration and SGD. A mini-batch is typically between 10 and 1,000 examples, chosen at random. Mini-batch SGD reduces the amount of noise in SGD but is still more efficient than full-batch.
+
+鉴于批量梯度下降性能问题，引入随机梯度下降（Stochastic Gradient Descent）：
+
+$$
+\begin{aligned}
+\text{Repeat until convergence} & \{ \\
+& \quad \text{for}\ i = 1\ \text{to}\ m\text{:} \\
+& \quad\quad \theta_{j} = \theta_{j} + \alpha(y^{(i)} - h_{\theta}(x^{(i)}))x_{j}^{(i)} \\
+& \}
+\end{aligned}
+$$
+
+|            |           概括          |	优点                   |	缺点 |
+| ---------- | ---------------------- | ----------------------- | ---- |
+| 批量梯度下降 | 减小训练样本总预测代价。   | 能获得最优解，支持并行计算。 | 样本容量大时，性能显著下降。 |
+| 随机梯度下降 | 减小每个训练样本预测代价。 |  训练速度快。              | 不一定获得全局最优，常出现抖动和噪音，且不能通过并行计算优化。 |
 
 <br></br>
 

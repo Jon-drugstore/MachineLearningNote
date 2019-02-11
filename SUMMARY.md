@@ -26,6 +26,7 @@
         * [Multiple Variables](/ML_Coursera_Andrew/LinearRegression/mult_var.md)
         * [Features and Polynomial Regression](/ML_Coursera_Andrew/LinearRegression/features.md)
         * [Normal Equation](/ML_Coursera_Andrew/LinearRegression/normal_equation.md)
+        * [Underfitting & Overfitting](/ML_Coursera_Andrew/LinearRegression/error_fit.md)
     * [Week 3]()
         * [Classification and Representation](/ML_Coursera_Andrew/Week3/classification.md)
         * [Logistic Regression Model](/ML_Coursera_Andrew/Week3/logistic_regression.md)
