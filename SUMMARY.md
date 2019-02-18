@@ -27,5 +27,6 @@
         * [Features and Polynomial Regression](/ML_Coursera_Andrew/LinearRegression/features.md)
         * [Normal Equation](/ML_Coursera_Andrew/LinearRegression/normal_equation.md)
         * [Underfitting & Overfitting](/ML_Coursera_Andrew/LinearRegression/error_fit.md)
-    * [Logistic Regression]()
+    * [Logistic Regression](/ML_Coursera_Andrew/LogisticRegression/lr.md)
         * [Classification](/ML_Coursera_Andrew/LogisticRegression/classification.md)
+        

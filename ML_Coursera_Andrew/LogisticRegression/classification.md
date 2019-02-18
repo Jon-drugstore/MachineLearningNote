@@ -12,7 +12,7 @@
 
 肿瘤诊断问题：
 
-![](Images/classification1.png)
+![](./Images/classification1.png)
 
 肿瘤诊断问题是二元分类问题（binary class problems）。定义$$y \in\lbrace 0, 1\rbrace$$，其中0表示负向类（negative class），代表恶性肿瘤，1为正向类（positive class）。如图，定义最右边的样本为**偏差项**。
 
