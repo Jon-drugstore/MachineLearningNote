@@ -28,5 +28,7 @@
         * [Normal Equation](/ML_Coursera_Andrew/LinearRegression/normal_equation.md)
         * [Underfitting & Overfitting](/ML_Coursera_Andrew/LinearRegression/error_fit.md)
     * [Logistic Regression](/ML_Coursera_Andrew/LogisticRegression/lr.md)
-        * [Classification](/ML_Coursera_Andrew/LogisticRegression/classification.md)
+        * [Decision Boundary](/ML_Coursera_Andrew/LogisticRegression/decision_boundary.md)
+        * [Cost Function & Gradient Descent](/ML_Coursera_Andrew/LogisticRegression/cost_gd.md)
+        * [Advanced Optimization](/ML_Coursera_Andrew/LogisticRegression/advanced_optimization.md)
         
