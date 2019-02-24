@@ -74,6 +74,11 @@ $$
 
 向量化实现：$$\theta := \theta - \frac{\alpha}{m} X^{T} (g(X \theta ) - y)$$
 
+![](./Images/quiz2_1.png)
+![](./Images/quiz2_2.png)
+![](./Images/quiz3.png)
+![](./Images/quiz4.png)
+
 <br>
 
 
