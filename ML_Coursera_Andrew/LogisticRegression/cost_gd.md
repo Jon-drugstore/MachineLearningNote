@@ -23,13 +23,33 @@ J(\theta) = \dfrac{1}{m} \sum_{i=1}^m \mathrm{Cost}(h_\theta(x^{(i)}),y^{(i)}) \
   \end{cases}
 $$
 
-有关$$J(\theta)$$cos图像如下：
+该函数等价于：
+
+$$
+\begin{split}
+\mathrm{Cost}(h_{\theta}(x),y) &= -y\log(h_{\theta}(x)) - (1-y)\log(1-h_{\theta}(x)) \\
+&= (\log(g(X\theta))^{T})y + \log(1-g(X\theta))^{T}(1-y)
+\end{split}
+&&
+
+代价函数随预测值$$h_{\theta}x$$变化为：
 
 <p align="center">
   <img src="./Images/cost2.png" width = "400"/>
 </p>
 
 如左图，当训练集结果为$$y=1$$（正样本）时，随着假设函数趋向$$1$$，代价函数趋于$$0$$，意味拟合程度好。如果假设函数趋于0，则给出一个很高代价，拟合程度差。算法会根据其纠正$$\theta$$值。右图$$y=0$$同理。
+
+<br></br>
+
+
+
+## 最小化代价函数
+----
+与线性回归一致，也使用梯度下降法来最小化代价函数：
+<p align="center">
+  <img src="./Images/cost3.png" width = "400"/>
+</p>
 
 <br></br>
 
