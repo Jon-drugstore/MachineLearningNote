@@ -28,9 +28,9 @@ $$
 $$
 \begin{split}
 \mathrm{Cost}(h_{\theta}(x),y) &= -y\log(h_{\theta}(x)) - (1-y)\log(1-h_{\theta}(x)) \\
-&= (\log(g(X\theta))^{T})y + \log(1-g(X\theta))^{T}(1-y)
+&= (\log(g(X\theta)))^{T})y + \log(1-g(X\theta))^{T}(1-y)
 \end{split}
-&&
+$$
 
 代价函数随预测值$$h_{\theta}x$$变化为：
 
@@ -48,7 +48,7 @@ $$
 ----
 与线性回归一致，也使用梯度下降法来最小化代价函数：
 <p align="center">
-  <img src="./Images/cost3.png" width = "400"/>
+  <img src="./Images/cost3.png" width = "600"/>
 </p>
 
 <br></br>
@@ -94,15 +94,21 @@ $$
 
 向量化实现：$$\theta := \theta - \frac{\alpha}{m} X^{T} (g(X \theta ) - y)$$
 
+<br>
+
+
+### Quiz
 ![](./Images/quiz2_1.png)
 ![](./Images/quiz2_2.png)
 ![](./Images/quiz3.png)
 ![](./Images/quiz4.png)
 
-<br>
+<br></br>
 
 
-### 代价函数求导过程
+
+## 代价函数求导过程
+----
 首先，
 
 $$
