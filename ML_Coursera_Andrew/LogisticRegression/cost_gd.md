@@ -40,6 +40,8 @@ $$
 
 如左图，当训练集结果为$$y=1$$（正样本）时，随着假设函数趋向$$1$$，代价函数趋于$$0$$，意味拟合程度好。如果假设函数趋于0，则给出一个很高代价，拟合程度差。算法会根据其纠正$$\theta$$值。右图$$y=0$$同理。
 
+> The equation for Cost Function is closely related to Shannon's Entropy measure from Information Theory. It is also the negative logarithm of the likelihood function, assuming a Bernoulli distribution of $$y$$. Indeed, minimizing the loss function yields a maximum likelihood estimate.
+
 <br></br>
 
 
