@@ -31,4 +31,6 @@
         * [Decision Boundary](/ML_Coursera_Andrew/LogisticRegression/decision_boundary.md)
         * [Cost Function & Gradient Descent](/ML_Coursera_Andrew/LogisticRegression/cost_gd.md)
         * [Advanced Optimization](/ML_Coursera_Andrew/LogisticRegression/advanced_optimization.md)
-    * [Regularization]()
+    * [Regularization](/ML_Coursera_Andrew/LogisticRegression/regular.md)
+        * [Cost Function](/ML_Coursera_Andrew/LogisticRegression/cost.md)
+    
