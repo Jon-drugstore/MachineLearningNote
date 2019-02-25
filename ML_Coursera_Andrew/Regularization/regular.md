@@ -39,3 +39,18 @@
     * 可保留所有参数。
     * 减少/惩罚各参数大小，以减轻各参数对模型影响程度。
     * 当有很多参数对模型只有轻微影响时，正则化方法表现很好。
+
+<br></br>
+
+
+
+## Quiz
+----
+![](./Images/quiz3.png)
+
+|       | Statement | Explanation |
+| ----- | --------- | ----------- |
+| False | Using a very large value $$\lambda$$ can't hurt hypothesis performance; the only reason we don't set to be too large is to avoid numerical problem. | Using a very large value of $$\lambda$$ can underfit training set. |
+| False | Because regularization causes $$J(\theta)$$ to no longer be convex, gradient descent may not always converge to global minimum (when $$\lambda > 0$$, and when using an appropriate learning rate $$\alpha$$). | Regularized logistic regression and regularized linear regression are both convex, and thus gradient descent will still converge to the global minimum. |
+| True | Using too large a value of $$\lambda$$ can cause hypothesis to underfit data. | A large value of results in a large $$\labmda$$ regularization penalty and thus a strong preference for simpler models which can underfit data. |
+| False | Because logistic regression outputs values $$0 <= h_{0} <= 1$$, its range of output values can only be "shrunk" slighly by regularization anyway, so regularization is generally not helpful for it.  |  |
