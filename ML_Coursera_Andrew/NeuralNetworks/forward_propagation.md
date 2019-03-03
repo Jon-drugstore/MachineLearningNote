@@ -96,3 +96,68 @@ $$
 其中：
 * $$m$$：训练集中的样本实例数量。
 * $$s_2$$：第二层神经网络中激活单元数量。
+
+<br></br>
+
+
+
+## Model Examples
+----
+### AND
+![](./Images/model_and.png)
+
+$$
+\Theta^{(1)} =\begin{bmatrix}-30 & 20 & 20\end{bmatrix}$，$h_\Theta(x) = g(-30+20x_1+20x_2)
+$$
+
+回顾Sigmoid函数图像，根据输入有上图中右边表格，即$$h_\theta(x)\approx x_1\ \text{AND}\ x_2$$。这样实现一个能进行与运算的神经网络。
+
+![](./Images/sigmod.png)
+
+<br>
+
+
+### OR
+
+![](./Images/model_or.png)
+
+<br>
+
+
+### XNOR
+> $$\text{XNOR} = (\text{x}_{1}\, \text{AND}\, \text{x}_{2})\, \text{OR} ((\text{NOT}\, \text{x}_{1}) \text{AND} (\text{NOT}\, \text{x}_{2}))$$
+
+构建三个单层神经网络，组合可得新的神经网络，完成XNOR操作：
+![](./Images/model_xnor1.png)
+
+![](./Images/model_xnor2.png)
+
+$$
+\Theta^{(1)} =\begin{bmatrix} -30 & 20 & 20 \newline 10 & -20 & -20 \end{bmatrix}
+$$
+
+$$
+\Theta^{(2)} =\begin{bmatrix}-10 & 20 & 20\end{bmatrix}
+$$
+
+$$
+\begin{align*}& a^{(2)} = g(\Theta^{(1)} \cdot x) \newline& a^{(3)} = g(\Theta^{(2)} \cdot a^{(2)}) \newline& h_\Theta(x) = a^{(3)}\end{align*}
+$$
+
+<br></br>
+
+
+
+## Quiz
+----
+![](./Images/quiz1_1.png)
+![](./Images/quiz1_2.png)
+
+![](./Images/quiz2_1.png)
+![](./Images/quiz2_2.png)
+
+![](./Images/quiz3.png)
+
+![](./Images/quiz4.png)
+
+Swapping $$\theta^{(1)}$$ swaps the hidden layers output $$\alpha^{(2)}$$. But the swap of $$\theta^{(2)}$$ cancels out the change, so the output will stay as the same.
