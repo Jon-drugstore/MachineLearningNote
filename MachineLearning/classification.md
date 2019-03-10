@@ -139,7 +139,7 @@ AUC判断分类器（预测模型）优劣的标准：
 
 
 
-## Why AuC and ROC?
+## Why AUC and ROC?
 ----
 这么多评价标准，为什么还要ROC和AUC？因为ROC曲线有个特性：当测试集正负样本分布变化时，ROC曲线保持不变。在实际数据集中经常出现类不平衡（class imbalance）现象，即负样本比正样本多或相反，且测试数据正负样本分布也可能随时间变化。下图是ROC曲线和Precision-Recall曲线对比：
 
