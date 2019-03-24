@@ -38,3 +38,4 @@
     * [Neural Networks](/ML_Coursera_Andrew/NeuralNetworks/nn.md)
         * [Forward Propagation](/ML_Coursera_Andrew/NeuralNetworks/forward_propagation.md)
         * [Cost Function](/ML_Coursera_Andrew/NeuralNetworks/cost.md)
+        * [Back Propagation](/ML_Coursera_Andrew/NeuralNetworks/back_propagation.md)
