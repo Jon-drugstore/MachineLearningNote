@@ -39,3 +39,4 @@
         * [Forward Propagation](/ML_Coursera_Andrew/NeuralNetworks/forward_propagation.md)
         * [Cost Function](/ML_Coursera_Andrew/NeuralNetworks/cost.md)
         * [Back Propagation](/ML_Coursera_Andrew/NeuralNetworks/back_propagation.md)
+        * [Gradient Checking for Back Propagation](/ML_Coursera_Andrew/NeuralNetworks/bp_gradient_checking.md)
