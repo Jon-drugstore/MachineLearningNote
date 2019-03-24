@@ -55,3 +55,140 @@
 * $$\Delta^{(l)}_{i,j}$$：从第$$l$$层第$$j$$个单元映射到第$$l+1$$层第$$i$$个单元的权重代价偏导（所有样本实例之和）。
 * $$D^{(l)}_{i,j}$$：$$\Delta^{(l)}_{i,j}$$的样本均值与正则化项之和。
 * 注：无需计算$$\delta^{(1)}$$，因为输入没有误差。
+
+<br></br>
+
+
+
+## Intuition
+----
+这里讨论反向传播算法中误差的数学意义：
+
+$$
+cost(t) =y^{(t)} \ \log (h_\Theta (x^{(t)})) + (1 - y^{(t)})\ \log (1 - h_\Theta(x^{(t)}))
+$$
+
+$$
+\delta_j^{(l)} = \dfrac{\partial}{\partial z_j^{(l)}} cost(t)
+$$
+
+**因为输入层没有偏差，所以没有$$\delta^{(1)}$$。同理，偏置单元值始终为1，也没有误差，故一般忽略偏置单元项误差**。
+
+<br>
+
+
+### 代价函数求导推导过程
+代价函数无正则化项时：
+
+$$
+\begin{gather*} J(\Theta) = - \frac{1}{m} \sum_{i=1}^m \left[y^{(i)} \log ((h_\Theta (x^{(i)}))) + (1 - y^{(i)})\log (1 - (h_\Theta(x^{(i)})))\right] \end{gather*}
+$$
+
+为方便起见，假设样本只有一个：
+
+$$
+\begin{gather*} J(\Theta) = -\left[y \log ((h_\Theta (x))) + (1 - y)\log (1 - (h_\Theta(x)))\right] \end{gather*}
+$$
+
+由于$$h_\Theta(x) = a^{(L)} = g(z^{(L)})$$，$$g(z) = \frac{1}{1+e^{(-z)}}$$，代入后整理可得：
+
+$$
+J(\Theta) = y\log(1+e^{-z^{(L)}}) + (1-y)\log(1+e^{z^{(L)}})
+$$
+
+![](./Images/bp2.png)
+
+再次为便于计算，用到如上图三层（输入层一般不计数）神经网络。
+
+由于$$z^{(l)} = \Theta^{(l-1)}a^{(l-1)}$$，于是有：
+
+$$
+h_\Theta(x)=a^{(4)}= g(z^{(4)})=g(\Theta^{(3)}a^{(3)})
+$$
+
+观察考虑各变量与$$\Theta^{(3)}$$间关系，有$$J(\Theta) \rightarrow  a^{(4)}\rightarrow z^{(4)}\rightarrow \Theta^{(3)}$$。要计算$$J(\Theta)$$偏导，要按照关系不断往前看，每一次回头看，就称为一次反向传播。若从微积分角度解释，每次回头看就是$$\Theta^{(3)}$$ 微小改变引起$$z^{(4)}$$改变，$$z^{(4)}$$微小改变引起$$a^{(4)}$$改变，$$a^{(4)}$$微小改变又引起$$ J(\Theta)$$改变。关系方向也可反过来写：$$\Theta^{(3)} \rightarrow z^{(4)} \rightarrow a^{(4)} \rightarrow J(\Theta)$$。
+
+类似微积分链式求导，令$$\delta^{(l)} = \frac{\partial}{\partial z^{(l)}} J(\Theta)$$，则有$$J(\Theta)$$关于$$\Theta^{(3)}$$偏导：
+
+$$
+\frac{\partial}{\partial\Theta^{(3)}} J(\Theta) = \frac{\partial J(\Theta)}{\partial z^{(4)}}   \frac{\partial z^{(4)}}{\partial\Theta^{(3)}} = \delta^{(4)}\frac{\partial z^{(4)}}{\partial\Theta^{(3)}}
+$$
+
+由于$$z^{(l)} = \Theta^{(l-1)}a^{(l-1)}$$，则有：
+
+$$
+\frac{\partial z^{(4)}}{\partial\Theta^{(3)}} = a^{(3)}
+$$
+
+对输出层，证得：
+
+$$
+\frac{\partial}{\partial\Theta^{(3)}} J(\Theta) =  a^{(3)}\delta^{(4)}$
+$$
+
+因为$$g(z) = \frac{1}{1+e^{-z}}$$且$$a^{(L)}=g(z^{(L)})$$，故：
+
+$$
+\begin{split}
+\delta^{(4)} &= \frac{\partial}{\partial z^{(4)}} J(\Theta) \\
+&=y \frac{-e^{-z^{(4)}}} {1+e^{-z^{(4)}}} + (1-y)\frac{e^{z^{(4)}}}{1+e^{z^{(4)}}} \\
+&=g(z^{(4)}) - y \\
+&= a^{(4)}-y
+\end{split}
+$$
+
+即证得$$\delta^{(4)} = a^{(4)}-y$$。
+
+对任意输出层$$L$$及$$\Theta^{(L-1)}$$，有$$J(\Theta) \rightarrow  a^{(L)}\rightarrow z^{(L)}\rightarrow \Theta^{(L-1)}$$关系不变，故证得：
+
+$$
+\frac{\partial}{\partial\Theta^{(L-1)}} J(\Theta) =  a^{(L-1)}\delta^{(L)}, \ \ \delta^{(L)} = a^{(L)}-y
+$$
+
+接下来看$$J(\Theta)$$关于$$\Theta^{(2)}$$的偏导。
+
+仍观察考虑各变量与$$\Theta^{(2)}$$之间关系，有：
+
+$$
+J(\Theta)\rightarrow a^{(4)} \rightarrow z^{(4)} \rightarrow a^{(3)} \rightarrow z^{(3)} \rightarrow\Theta^{(2)}
+$$
+
+$$
+\frac{\partial}{\partial \Theta^{(2)}}J(\Theta) = \frac{\partial J(\Theta)}{\partial z^{(3)}} \frac{\partial z^{(3)}}{\partial \Theta^{(2)}}=\delta^{(3)} \frac{\partial z^{(3)}}{\partial \Theta^{(2)}}=  a^{(2)}\delta^{(3)}
+$$
+
+$$
+\delta^{(3)} = \frac{\partial}{\partial z^{(3)}}J(\Theta) =\frac{\partial J(\Theta)}{\partial z^{(4)}} \frac{\partial z^{(4)}}{\partial a^{(3)}}\frac{\partial a^{(3)}}{\partial z^{(3)}} = \delta^{(4)}\frac{\partial z^{(4)}}{\partial a^{(3)}}\frac{\partial a^{(3)}}{\partial z^{(3)}}
+$$
+
+易求得：
+
+$$
+\frac{\partial z^{(4)}}{\partial a^{(3)}}=\Theta^{(3)}
+$$
+
+$$
+g'(z) =\frac{e^{-z}}{(1+e^{-z})^2}=\frac{(1+e^{-z})-1}{(1+e^{-z})^2}=\frac{1}{1+e^{-z}}-\frac{1}{(1+e^{-z})^2}=g(z)(1-g(z))
+$$
+
+即$$g'(z^{(l)})=g(z^{(l)}) .* \ (1-g(z^{(l)}))$$。
+
+有$$a^{(l)} = g(z^{(l)}$$，添加偏置单元$$a^{(l)}_0 = 1$$，则：
+
+$$
+\frac{\partial a^{(3)}}{\partial z^{(3)}}=a^{(3)} .*\ (1-a^{(3)})
+$$
+
+即证得：
+
+$$
+\delta^{(3)}=(\Theta^{(3)})^T\delta^{(4)}.*(a^{(3)})'=(\Theta^{(3)})^T\delta^{(4)}.*\ a^{(3)} .*\ (1-a^{(3)})
+$$
+
+对任意隐藏层$$l + 1$$及权重矩阵$$\Theta^{(l)}$$，有$$J(\Theta)\rightarrow a^{(L)} \rightarrow z^{(L)} \rightarrow \dots \rightarrow a^{(l+1)} \rightarrow z^{(l+1)} \rightarrow\Theta^{(l)}$$关系不变，故证得：
+
+$$
+\frac{\partial}{\partial\Theta^{(l)}} J(\Theta) =  a^{(l)}\delta^{(l+1)}, \ \ \delta^{(l)} = (\Theta^{(l)})^T\delta^{(l+1)}.*\ a^{(l)} .*\ (1-a^{(l)})\; \; \; \; \;  \text{for }l := L-1, L-2,\dots,2.
+$$
+
+再添回为计算方便去掉的$$\frac{1}{m}$$和正则化项（时刻记住偏置单元不正则化）等，即可得$$J(\Theta)$$ 偏导。
