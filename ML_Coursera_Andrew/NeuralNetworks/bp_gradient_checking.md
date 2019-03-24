@@ -43,6 +43,8 @@ $$
 
 3. 比较$$gradApprox$$与$$DVec$$相似程度（比如可用欧式距离）。
 
+![](./Images/quiz_gradient_checking.png)
+
 代码：
 
 ```octave

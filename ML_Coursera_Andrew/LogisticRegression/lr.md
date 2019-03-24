@@ -69,3 +69,13 @@ $$
 
 
 
+## Quiz
+----
+![](./Images/quiz6.png)
+![](./Images/quiz7.png)
+![](./Images/quiz8.png)
+![](./Images/quiz9_1.png)
+![](./Images/quiz9_2.png)
+![](./Images/quiz10.png)
+![](./Images/quiz11.png)
+![](./Images/quiz12.png)
