@@ -58,15 +58,7 @@
 
 > 描述网络中某个神经元时，更多用“单元”（unit）指代，有时也会用“节点”（node）表达。
 
-<p align="center">
-  <img src="./Images/ann3.jpg" width = "600"/>
-</p>
-
-<center><i>神经元扩展</i></center>
-
-<br>
-
-其中，**函数_f_是非线性的且称作激活函数（Activation Function），把神经元输出变成非线性，因为现实中大部分数据是非线性的。**
+其中，**函数_f_是非线性的且称作激活函数（Activation Function），把神经元输出变成非线性。**
 
 激活函数有：
 * Sigmoid: takes a real-valued input and squashes it to range between 0 and 1.
@@ -117,6 +109,7 @@ $$
 <br>
 
 发现这两个公式是线性代数方程组。因此可用矩阵乘法表达。例如，输入变量是$$[a_1，a_2，a_3]^T$$ 代表由$$a_1$$，$$a_2$$，$$a_3$$组成的列向量），用向量_a_表示。方程左边是$$[z_1，z_2]^T$$，用向量_z_表示。系数是矩阵_W_。于是，输出公式改写成：
+
 $$
 g(W * a) = z
 $$

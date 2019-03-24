@@ -47,14 +47,6 @@ When solving a problem using traditional Machine Learning, it is generally recom
   <img src="./Images/ml2.png" width = "600"/>
 </p>
 
-<br>
-
-
-### Interpretability
-Suppose we use Deep Learning to give automated scoring to essays. The performance it gives is near human performance. But it does not reveal why it has given that score. Indeed mathematically you can find out which nodes of a deep neural network were activated, but we don’t know what there neurons were supposed to model and what these layers of neurons were doing collectively. So we fail to interpret the results.
-
-On the other hand, Machine Learning like decision trees give us crisp rules as to why it chose what it chose, so it is particularly easy to interpret the reasoning behind it. Therefore, algorithms like decision trees and linear/logistic regression are primarily used in industry for interpretability.
-
 <br></br>
 
 
