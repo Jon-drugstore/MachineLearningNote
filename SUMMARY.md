@@ -37,3 +37,4 @@
         * [Regularized Logistic Regression](/ML_Coursera_Andrew/Regularization/logistic_regression.md)
     * [Neural Networks](/ML_Coursera_Andrew/NeuralNetworks/nn.md)
         * [Forward Propagation](/ML_Coursera_Andrew/NeuralNetworks/forward_propagation.md)
+        * [Cost Function](/ML_Coursera_Andrew/NeuralNetworks/cost.md)
