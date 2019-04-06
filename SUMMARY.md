@@ -45,4 +45,5 @@
         * [Evaluating Hypothesis](/ML_Coursera_Andrew/AlgorithmTuning/evaluating.md)
         * [Validation Dataset](/ML_Coursera_Andrew/AlgorithmTuning/validation.md)
         * [Bias vs Variance](/ML_Coursera_Andrew/AlgorithmTuning/bias_variance.md)
-        * [Learning Curve](/ML_Coursera_Andrew/AlgorithmTuning/curve.md)
+        * [Learning Curve](/ML_Coursera_Andrew/AlgorithmTuning/curved.md)
+        * [Skewed Classes](/ML_Coursera_Andrew/AlgorithmTuning/skewed.md)
