@@ -41,3 +41,6 @@
         * [Back Propagation](/ML_Coursera_Andrew/NeuralNetworks/back_propagation.md)
         * [Gradient Checking for Back Propagation](/ML_Coursera_Andrew/NeuralNetworks/bp_gradient_checking.md)
         * [Parameter Initialization](/ML_Coursera_Andrew/NeuralNetworks/parameter_init.md)
+    * [Algorithm Tuning](/ML_Coursera_Andrew/AlgorithmTuning/tuning.md)
+        * [Evaluating Hypothesis](/ML_Coursera_Andrew/AlgorithmTuning/evaluating.md)
+        * [Validation Dataset](/ML_Coursera_Andrew/AlgorithmTuning/validation.md)
