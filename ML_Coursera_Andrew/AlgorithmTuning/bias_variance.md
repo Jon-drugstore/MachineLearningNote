@@ -56,10 +56,3 @@ To choose model and regularization term $$\lambda$$, need to:
 </p>
 
 <br></br>
-
-
-
-## 神经网络结构对偏差方差的影响
-----
-* 当神经网络的结构简单时，则易出现高偏差。
-* 当神经网络的结构过于复杂时，则易出现高方差，可通过增大$$\lambda$$解决。
