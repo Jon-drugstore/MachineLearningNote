@@ -13,6 +13,7 @@
     * [Evolutionary Algorithm]()
         * [Evolution Strategy](MachineLearning/Evolutionary/evolution_strategy.md)
         * [Generic Algorithm](MachineLearning/Evolutionary/generic_algorithm.md)
+    * [SVM](MachineLearning/svm.md)
     * [Theory]()
         * [Statistics](MachineLearning/Theory/statistics.md)
 
