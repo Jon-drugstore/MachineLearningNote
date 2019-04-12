@@ -13,7 +13,10 @@
     * [Evolutionary Algorithm]()
         * [Evolution Strategy](MachineLearning/Evolutionary/evolution_strategy.md)
         * [Generic Algorithm](MachineLearning/Evolutionary/generic_algorithm.md)
-    * [SVM](MachineLearning/svm.md)
+    * [SVM](MachineLearning/SVM/svm.md)
+        * [Hard Margin](MachineLearning/SVM/hard_margin.md)
+        * [Soft Margin](MachineLearning/SVM/soft_margin.md)
+        * [Kernel](MachineLearning/SVM/kernel.md)
     * [Theory]()
         * [Statistics](MachineLearning/Theory/statistics.md)
 
