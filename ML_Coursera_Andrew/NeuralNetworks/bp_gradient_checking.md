@@ -47,7 +47,7 @@ $$
 
 代码：
 
-```octave
+```matlab
 epsilon = 1e-4;
 for i = 1:n,
   thetaPlus = theta;
