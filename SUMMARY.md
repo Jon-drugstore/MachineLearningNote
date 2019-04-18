@@ -18,6 +18,7 @@
         * [Soft Margin](MachineLearning/SVM/soft_margin.md)
         * [Kernel](MachineLearning/SVM/kernel.md)
         * [SVR](MachineLearning/SVM/svr.md)
+        * [SMO](MachineLearning/SVM/smo.md)
     * [Theory]()
         * [Statistics](MachineLearning/Theory/statistics.md)
 
