@@ -19,6 +19,7 @@
         * [Kernel](MachineLearning/SVM/kernel.md)
         * [SVR](MachineLearning/SVM/svr.md)
         * [SMO](MachineLearning/SVM/smo.md)
+        * [Reference](MachineLearning/SVM/reference.md)
     * [Theory]()
         * [Statistics](MachineLearning/Theory/statistics.md)
 
