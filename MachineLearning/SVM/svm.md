@@ -312,3 +312,28 @@ $$
 \underset{\theta}\min C [\sum^{m}_{i=1}y^{(i)} cost_{1}(\theta^{T}f^{9i}) + (1-y^{(i)})cost_{0}(\theta^{T}f^{(i)})] + \frac{1}{2}\sum^{n}_{j=1}\theta^{2}_{j}
 $$
 
+<br></br>
+
+
+
+## Exercises
+----
+![](./Images/ex1.png)
+
+
+![](./Images/ex2_1.png)
+![](./Images/ex2_2.png)
+![](./Images/ex2_3.png)
+![](./Images/ex2_4.png)
+
+
+![](./Images/ex3.png)
+
+
+![](./Images/ex4.png)
+
+
+![](./Images/ex5.png)
+
+
+![](./Images/ex6.png)
