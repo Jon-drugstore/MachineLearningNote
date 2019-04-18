@@ -77,7 +77,7 @@ $$
 由于向量$$\overrightarrow{x_0x_1}$$与S平面法向量$$\boldsymbol{\omega}$$平行，所以有：
 
 $$
-boldsymbol{\omega}\cdot \overrightarrow{x_0x_1}| = |\boldsymbol{\omega}||\overrightarrow{x_0x_1}| = \sqrt{(\omega^1)^2 + ... + (\omega^1)^n}d = ||w||d \tag{5}
+\boldsymbol{\omega}\cdot \overrightarrow{x_0x_1}| = |\boldsymbol{\omega}||\overrightarrow{x_0x_1}| = \sqrt{(\omega^1)^2 + ... + (\omega^1)^n}d = ||w||d \tag{5}
 $$
 
 又由于：

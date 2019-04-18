@@ -101,3 +101,160 @@ SVM中的多分类的问题可通过DAG SVM解决：
 ![](./Images/dag_svm.gif)
 
 分类时，先问分类器“1对5”（意思是它能回答“是第1类还是第5类”）。如果5，往左走，再问“2对5”分类器。如果还是“5”，继续左走。这样下去，可得到分类结果。时间复杂度最坏是$$O(N^3)$$。
+
+<br></br>
+
+
+
+## Cost Function
+----
+逻辑回归的预测函数为：
+
+$$
+h_{\theta}(x) = \frac{1}{1+e^{-\theta{T}x}}
+$$
+
+代价函数为：
+
+$$
+cost = -y \mathrm{log} h_{\theta}(x) + (1-y)\mathrm{log}(1-h_{\theta}(x))
+$$
+ 
+$$y=1$$时，代价函数为：
+
+$$
+cost=−\mathrm{log}h_{\theta}(x)=−\mathrm{log}\frac{1}{1+e^{-z}}, \quad z=\theta^{T}x
+$$
+ 
+此时，代价函数随$$z$$变化曲线如下：
+
+![](./Images/cost1.png)
+
+$$y=1$$时，随$$z$$变大，预测代价变小。因此，逻辑回归要在面对正样本$$y=1$$时，获得高预测精度，就希望$$z=\theta^{T}x >> 0$$。SVM则将上图曲线拉直为下图中折线，构成$$y=1$$时的代价函数曲线$$cost_{1}(z)$$：
+
+![](./Images/cost2.png)
+
+$$y=1$$时，为预测精度够高，SVM希望$$\theta^{T}x \ge 1$$。同样，$$y=0$$时，SVM定义了代价函数$$cost_{0}(z)$$，为预测精度足够高，SVM希望$$\theta^{T}x \le −1$$：
+
+![](./Images/cost3.png)
+
+<br>
+
+
+### 最小化预测代价
+SVM定义最小化预测代价过程为：
+
+$$
+\underset{\theta}\min  C [\sum^{m}_{i=1}y^{(i)} \mathrm{cost}_{1}(\theta^{T}x^{(i)}) + (1-y^{(i)})\mathrm{cost}_{0}(\theta^{T}x^{(i)})] + \frac{1}{2}\sum^{n}_{j=1}\theta_{j}^{2}
+$$
+
+逻辑回归最小化预测代价过程为：
+
+$$
+\underset{\theta}\min\frac{1}{m} [\sum^{m}_{i=1}y^{(i)} (-\mathrm{log}h_{\theta}(x^{(i)})) + (1-y^{(i)})(-\mathrm{log}(1-h_{\theta}(x^{(i)})))] + \frac{\lambda}{2m}\sum^{n}_{j=1}\theta^{2}_{j}
+$$
+
+可将逻辑回归代价函数简要描述为：
+
+$$
+cost = A + \lambda B
+$$
+
+而 SVM 的代价函数描述为：
+
+$$
+cost = CA + B
+$$
+
+即，
+* 逻辑回归通过正规化参数$$\lambda$$调节A和B所占的权重，且A权重与$$\lambda$$取值成反比。
+* SVM通过参数C调节A和B所占的权重，且A权重与C取值成反比。即，参数C可认为是扮演了$$\frac{1}{\lambda}$$的角色。
+
+<br>
+
+
+### 预测函数
+训练得到$$\theta$$后，可代入SVM预测函数进行预测：
+
+$$
+h_{\theta}(x) =
+  \begin{cases}
+    1  & \quad \text{if } \theta^{T}x \ge 0\\
+    0  & \quad \text{otherwise}
+  \end{cases}
+$$
+
+<br></br>
+
+
+
+## 大间距分类器
+----
+SVM最小化代价函数过程为：
+
+$$
+\underset{\theta}\min C [\sum^{m}_{i=1} y^{(i)} \mathrm{cost}_{1} (\theta^{T}x^{(i)}) + (1-y^{(i)}) \mathrm{cost}_{0}(\theta^{T}x^{(i)})] + \frac{1}{2}\sum^{n}_{j=1}\theta_{j}^{2}
+$$
+
+且当$$y^{(i)} = 1$$时，SVM希望$$\theta^{T}x^{(i)} \ge 1$$；当$$y^{(i)} = 0$$时，SVM希望$$\theta^{T}x^{(i)} \le -1$$。所以，最小化代价函数过程可描述为：
+
+![](./Images/svm20.png)
+
+SVM最终决策边界是图中黑色直线所示的决策边界。该决策边界保持与正、负样本足够大距离，因此，SVM是大间距分类器（large margin classifier）。
+
+![](./Images/svm16.jpg)
+
+<br>
+
+
+### 推导
+假定有两个2维向量：
+
+$$
+u = \begin{pmatrix} u_{1} \\ u_{2} \end{pmatrix}, v = \begin{pmatrix} v_{1} \\ v_{2} \end{pmatrix}
+$$
+
+令$$p$$为$$v$$投影到$$u$$的线段长（该值可正可负）：
+
+![](./Images/svm17.png)
+
+则$$u$$和$$v$$内积为：
+
+$$
+u^{T}v = p * \|u\| = u_{1}v_{1} + u_{2}v_{2}
+$$
+
+其中，$$\|u\|$$为$$u$$的范数，即$$u$$长度。
+
+假设$$\theta = \begin{pmatrix} \theta_{1} \\ \theta_{2} \end{pmatrix}$$，且令$$\theta_{0} = 0$$，以使得向量$$\theta$$过原点，则：
+
+$$
+\begin{split}
+\underset{\theta}\min\frac{1}{2}\sum^{2}_{j=1}\theta^{2}_{j} &= \underset{\theta}\min\frac{1}{2}(\theta_{1} + \theta_{2})^{2} \\
+&= \underset{\theta}\min\frac{1}{2}(\sqrt{\theta_{1}^{2} + \theta_{2}^{2}})^{2} \\
+&= \underset{\theta}\min\frac{1}{2} \|\theta\|^{2}
+\end{split}
+$$
+
+由向量内积公式得：
+
+$$
+\theta^{T}x^{(i)} = p^{(i)} \dot \|\theta\|
+$$
+
+其中，$$p^{(i)}$$为特征向量$$x^{(i)}$$在$$\theta$$上的投影：
+
+![](./Images/svm18.jpg)
+
+$$y^{(i)} = 1$$时，希望$$\theta^{T}x^{(i)} \ge 1$$，即$$p^{(i)} \dot \|\theta\| \ge q$$，此时考虑两种情况：
+1. $$p^{(i)}$$很小，则需$$\|\theta\|$$很大，这与$$\underset{\theta}\min\frac{1}{2}\|\theta\|^{2}$$矛盾。
+2. $$p^{(i)}$$很大，如图所示，即样本与决策边界距离够大，此时才能在既要$$\|\theta\|$$足够小情况下，又能有$$\theta^{T}x^{(i)} \ge 1$$，保证预测精度够高。这解释了为什么SVM具有大间距分类器性质。
+
+![](./Images/svm19.jpg)
+
+<br></br>
+
+
+
+## 核函数
+----
