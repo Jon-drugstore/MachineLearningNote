@@ -117,3 +117,16 @@ $$
 $$
 
 其中，$$\epsilon$$可为$$0.01,0.05,0.10,⋯0.01,0.05,0.10,⋯$$。假设$$\epsilon=0.01=0.01$$，意味特征间99%差异性得到保留。
+
+<br></br>
+
+
+
+## Exercises
+----
+![](./Images/pca_ex1_1.png)
+![](./Images/pca_ex1_2.png)
+![](./Images/pca_ex1_3.png)
+
+
+![](./Images/pca_ex2.png)

@@ -182,3 +182,17 @@ $$
 \rho_{XY} = \frac{\mathrm{cov}(X,Y)}{\sigma_{X}\sigma_{Y}} = \frac{E[(X-\mu_{X})(Y-\mu_{U})]}{\sigma_{X}\sigma_{Y}} = \frac{\sum^{n}_{i=1}(x - \mu_{X}(y - \mu_{Y}))}{\sqrt{\sum^{n}_{i=1}(x-\mu_{X})^{2}} \sqrt{\sum_{i=1}^{n}(y - \mu_{Y})^{2}}}
 $$
 
+<br></br>
+
+
+
+## Exercises
+----
+![](./Images/kmeans_ex1.png)
+
+
+![](./Images/kmeans_ex2_1.png)
+![](./Images/kmeans_ex2_2.png)
+
+
+![](./Images/kmeans_ex3.png)
