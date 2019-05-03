@@ -22,6 +22,8 @@
         * [Reference](MachineLearning/SVM/reference.md)
     * [UnsupervisedLearning]()
         * [K-Means](MachineLearning/UnsupervisedLearning/kmeans.md)
+    * [Anomaly Detection]()
+        * [Algorithm](MachineLearning/AnomalyDetection/algorithm.md)
     * [Data Engineering]()
         * [PCA - Principal Component Analysis](MachineLearning/DataEngineering/pca.md)
     * [Theory]()
