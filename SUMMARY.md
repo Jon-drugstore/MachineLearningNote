@@ -26,6 +26,7 @@
         * [PCA - Principal Component Analysis](MachineLearning/DataEngineering/pca.md)
     * [Theory]()
         * [Statistics](MachineLearning/Theory/statistics.md)
+        * [Gaussian Distribution](MachineLearning/Theory/gaussian.md)
 
 
 * [Machine Learning@Coursera]()
