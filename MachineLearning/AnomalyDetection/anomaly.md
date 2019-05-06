@@ -67,3 +67,19 @@
 
 
 ![](./Images/ex2.png)
+
+
+![](./Images/ex3_1.png)
+![](./Images/ex3_2.png)
+
+
+![](./Images/ex4.png)
+
+
+![](./Images/ex5.png)
+
+
+![](./Images/ex6.png)
+
+
+![](./Images/ex7.png)

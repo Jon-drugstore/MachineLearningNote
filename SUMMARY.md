@@ -24,6 +24,7 @@
         * [K-Means](MachineLearning/UnsupervisedLearning/kmeans.md)
     * [Anomaly Detection](MachineLearning/AnomalyDetection/anomaly.md)
         * [Algorithm](MachineLearning/AnomalyDetection/algorithm.md)
+        * [Multivariate Gaussian Distribution](MachineLearning/AnomalyDetection/multi_gaussian.md)
     * [Data Engineering]()
         * [PCA - Principal Component Analysis](MachineLearning/DataEngineering/pca.md)
     * [Theory]()
