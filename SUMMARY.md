@@ -27,6 +27,7 @@
         * [Multivariate Gaussian Distribution](MachineLearning/AnomalyDetection/multi_gaussian.md)
     * [Recommendation]()
         * [Content Based Recommendation](MachineLearning/Recommendation/content.md)
+        * [Collaborative Filtering](MachineLearning/Recommendation/collaborative_filtering.md)
     * [Data Engineering]()
         * [PCA - Principal Component Analysis](MachineLearning/DataEngineering/pca.md)
     * [Theory]()
