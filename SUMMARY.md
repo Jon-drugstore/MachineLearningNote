@@ -28,6 +28,7 @@
     * [Recommendation]()
         * [Content Based Recommendation](MachineLearning/Recommendation/content.md)
         * [Collaborative Filtering](MachineLearning/Recommendation/collaborative_filtering.md)
+        * [Low Rank Matrix Factorization](MachineLearning/Recommendation/low_rank_matrix.md)
     * [Data Engineering]()
         * [PCA - Principal Component Analysis](MachineLearning/DataEngineering/pca.md)
     * [Theory]()
