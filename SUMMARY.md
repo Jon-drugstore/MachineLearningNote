@@ -25,6 +25,8 @@
     * [Anomaly Detection](MachineLearning/AnomalyDetection/anomaly.md)
         * [Algorithm](MachineLearning/AnomalyDetection/algorithm.md)
         * [Multivariate Gaussian Distribution](MachineLearning/AnomalyDetection/multi_gaussian.md)
+    * [Recommendation]()
+        * [Content Based Recommendation](MachineLearning/Recommendation/content.md)
     * [Data Engineering]()
         * [PCA - Principal Component Analysis](MachineLearning/DataEngineering/pca.md)
     * [Theory]()
