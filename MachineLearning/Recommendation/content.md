@@ -1,5 +1,24 @@
 # <center>Content Based Recommendation</center>
 
+
+
+<br></br>
+
+* 简介：向用户推荐和其过去喜欢项的内容（例如元数据、描述、话题等等）相似的项
+* 输入：仅依赖于项和用户的内容/描述
+* 类型：
+    1. 信息检索
+    2. 机器学习（例如朴素贝叶斯、支持向量机、决策树等等）
+* 优点：
+    1. No cold start and sparsity.
+    2. 不需惯用数据。
+    3. 没有流行度偏见。
+    4. 可使用用户内容特性提供解释。
+* 缺点：
+    1. 项内容须是机器可读和有意义的。Data should be in structured format.
+    2. 难联合多个项的特性。Unable to use quality judgements from other users.
+    3. 难有意外，缺少多样性。
+
 <br></br>
 
 

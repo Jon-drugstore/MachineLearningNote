@@ -1,5 +1,37 @@
 # <center>Collaborative Filtering</center>
 
+
+
+<br></br>
+
+* Based on assumptions:
+    1. Users with similar interests have common perferences.
+    2. Sufficiently large number of user perferences are avilable.
+
+* User Based
+
+    * Advantage:
+
+        1. No knowledge about item features needed.
+
+    * Problems
+
+        1. New user/item cold start problem.
+        2. Sparsity problem: if there are many items to be recommended, user/rating matrix is sparse and it hard to find the users who have rated the same item.
+        3. 数百万用户计算，用户之间两两计算相似度，计算量过大。
+        4. 人是善变的。
+        5. Popularity Bias: Tend to recommend only popular items.
+
+* Item Based
+
+    * 优势
+
+        1. 计算性能高，通常用户数量远大于物品数量，实际计算物品之间的相似度，可以只选择同一个大分类下的类似物品来计算，以此减少计算量。
+        2. 可预先保留结果。
+        3. 物品不善变。
+        4. No knowledge about item features needed.
+        5. Reduced sparsity problem.
+
 <br></br>
 
 
@@ -34,8 +66,6 @@ $$
 | Cute puppies of love | ?        | 4      | 0        | ?       | ?       | ?       |
 | Nonstop car chases   | 0        | 0      | 5        | 4       | ?       | ?       |
 | Swords vs. karate    | 0        | 0      | 5        | ?       | ?       | ?       |
-
-![](./Images/ex1.png)
 
 <br>
 

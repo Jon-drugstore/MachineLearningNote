@@ -1,4 +1,4 @@
-# <center>Low Rank Matrix Factorization</center>
+# <center>Matrix Factorization</center>
 
 <br></br>
 
