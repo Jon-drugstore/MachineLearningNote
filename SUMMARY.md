@@ -4,8 +4,9 @@
 
 * [Machine Learning](MachineLearning/ml.md)
     * [Artificial Neural Networks](MachineLearning/ann.md)
-    * [Classification](MachineLearning/classification.md)
-        * [AUC & ROC](MachineLearning/auc_roc.md)
+    * [Classification]()
+        * [Confusion Matrix](MachineLearning/confusion_matrix.md)
+        * [AUC - Area Under Curve](MachineLearning/auc.md)
     * [Convolutional Neural Network](MachineLearning/cnn.md)
     * [CUDA](MachineLearning/cuda.md)
     * [Embedding](MachineLearning/embedding.md)
