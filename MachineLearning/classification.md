@@ -112,7 +112,7 @@ To compute the points in an ROC curve, we could evaluate a logistic regression m
 
 
 
-## AUC
+## AUC - Area Under Curve
 ----
 <p align="center">
   <img src="./Images/auc1.svg" width = "400"/>
