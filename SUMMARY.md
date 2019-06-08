@@ -5,6 +5,7 @@
 * [Machine Learning](MachineLearning/ml.md)
     * [Artificial Neural Networks](MachineLearning/ann.md)
     * [Classification](MachineLearning/classification.md)
+        * [AUC & ROC](MachineLearning/auc_roc.md)
     * [Convolutional Neural Network](MachineLearning/cnn.md)
     * [CUDA](MachineLearning/cuda.md)
     * [Embedding](MachineLearning/embedding.md)
