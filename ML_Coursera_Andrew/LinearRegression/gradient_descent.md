@@ -151,36 +151,6 @@ $$
 
 
 
-## Stochastic Gradient Descent 随机梯度下降
-----
-In gradient descent, a batch is the total number of examples you use to calculate the gradient in a single iteration. So far, we've assumed that the batch has been the entire data set. A very large batch may cause even a single iteration to take a very long time to compute.
-
-A large data set with randomly sampled examples probably contains redundant data. In fact, redundancy becomes more likely as the batch size grows. Some redundancy can be useful to smooth out noisy gradients, but enormous batches tend not to carry much more predictive value than large batches.
-
-By choosing examples at random from data set, we could estimate a big average from a much smaller one. **Stochastic gradient descent (SGD)** takes this idea to the extreme -- it uses only a single example (a batch size of 1) per iteration. Given enough iterations, SGD works but is very noisy. The term "stochastic" indicates that the one example comprising each batch is chosen at random.
-
-**Mini-batch stochastic gradient descent (mini-batch SGD)** is a compromise between full-batch iteration and SGD. A mini-batch is typically between 10 and 1,000 examples, chosen at random. Mini-batch SGD reduces the amount of noise in SGD but is still more efficient than full-batch.
-
-鉴于批量梯度下降性能问题，引入随机梯度下降（Stochastic Gradient Descent）：
-
-$$
-\begin{aligned}
-\text{Repeat until convergence} & \{ \\
-& \quad \text{for}\ i = 1\ \text{to}\ m\text{:} \\
-& \quad\quad \theta_{j} = \theta_{j} + \alpha(y^{(i)} - h_{\theta}(x^{(i)}))x_{j}^{(i)} \\
-& \}
-\end{aligned}
-$$
-
-|            |           概括          |	优点                   |	缺点 |
-| ---------- | ---------------------- | ----------------------- | ---- |
-| 批量梯度下降 | 减小训练样本总预测代价。   | 能获得最优解，支持并行计算。 | 样本容量大时，性能显著下降。 |
-| 随机梯度下降 | 减小每个训练样本预测代价。 |  训练速度快。              | 不一定获得全局最优，常出现抖动和噪音，且不能通过并行计算优化。 |
-
-<br></br>
-
-
-
 ## Gradients
 ----
 The gradient of a function, denoted as follows, is the vector of partial derivatives with respect to all of the independent variables:
@@ -229,3 +199,107 @@ The gradient always points in the direction of steepest increase in the loss fun
 ----
 As noted, the gradient vector has both a direction and a magnitude. Gradient descent algorithms multiply the gradient by a scalar known as the **learning rate (step size)** to determine next point. For example, if the gradient magnitude is 2.5 and the learning rate is 0.01, then the gradient descent algorithm will pick the next point 0.025 away from the previous point.
 
+<br></br>
+
+
+
+## Stochastic Gradient Descent 随机梯度下降
+----
+In gradient descent, a batch is the total number of examples you use to calculate the gradient in a single iteration. A large data set with randomly sampled examples probably contains redundant data. In fact, redundancy becomes more likely as the batch size grows. Some redundancy can be useful to smooth out noisy gradients, but enormous batches tend not to carry much more predictive value than large batches.
+
+By choosing examples at random from data set, we could estimate a big average from a much smaller one. **Stochastic gradient descent (SGD)** takes this idea to the extreme -- it uses only a single example (a batch size of 1) per iteration. Given enough iterations, SGD works but is very noisy. The term _stochastic_ indicates that the one example comprising each batch is chosen at random.
+
+随机梯度下降算法首先对训练集随机洗牌，然后：
+
+$$
+\begin{aligned}
+\text{Repeat until convergence} & \{ \\
+& \quad \text{for}\ i = 1\ \text{to}\ m\text{:} \\
+& \quad\quad \theta_{j} = \theta_{j} + \alpha(y^{(i)} - h_{\theta}(x^{(i)}))x_{j}^{(i)} \\
+& \}
+\end{aligned}
+$$
+
+相较于批量梯度下降，随机梯度下降每次更新$$\theta_j$$只会用当前遍历的样本。虽然外层循环仍需遍历所有样本，但往往能在样本尚未遍历完时就已收敛。因此，面临大数据集时，随机梯度下降法性能卓越。
+
+<div style="text-align:center">
+  <img src="./Images/sgd1.png" width="400"></img>
+</div>
+
+|            |           概括          |	优点                   |	缺点 |
+| ---------- | ---------------------- | ----------------------- | ---- |
+| 批量梯度下降 | 减小训练样本总预测代价。   | 能获得最优解，支持并行计算。 | 样本容量大时，性能显著下降。 |
+| 随机梯度下降 | 减小每个训练样本预测代价。 |  训练速度快。              | 不一定获得全局最优，常出现抖动和噪音，且不能通过并行计算优化。 |
+
+<div style="text-align:center">
+  <img src="./Images/sgd7.png" width="600"></img>
+</div>
+
+<br>
+
+
+### SGD Convergence
+相较于批量梯度下降，随机梯度下降倾向于找到局部最优解而不是全局。因此，通常需绘制调试曲线来监控随机梯度工作过程是否正确。假定误差定义为$$cost(\theta, (x^{(i)}, y^{(i)})) = \frac{1}{2}(h_\theta(x^{(i)})-y^{(i)})^2$$，则每完成1000次迭代（即遍历1000个样本），求取平均误差并绘制，得到误差随迭代次数变化曲线：
+
+<div style="text-align:center">
+  <img src="./Images/sgd2.png" width="400"></img>
+</div>
+
+另外，遇到下面曲线也不用担心，并不意味着学习率出问题，可能是平均间隔取太小：
+
+<div style="text-align:center">
+  <img src="./Images/sgd3.png" width="400"></img>
+</div>
+
+如果每进行5000次迭代才绘制，那么曲线将更加平滑：
+
+<div style="text-align:center">
+  <img src="./Images/sgd4.png" width="400"></img>
+</div>
+
+如果面临明显上升态势曲线，要考虑降低学习率$$\alpha$$：
+
+<div style="text-align:center">
+  <img src="./Images/sgd5.png" width="400"></img>
+</div>
+
+另外，学习率$$\alpha$$还可随着迭代次数优化：
+
+$$
+\alpha = \frac{constant1} {iterationNumber + constant2}
+$$
+
+随迭代次数增多，下降步调会放缓，避免出现抖动：
+
+<div style="text-align:center">
+  <img src="./Images/sgd6.png" width="400"></img>
+</div>
+
+<div style="text-align:center">
+  <img src="./Images/sgd8.png" width="600"></img>
+</div>
+
+<br></br>
+
+
+
+## Mini Batch Gradient Descent 小批量梯度下降法
+----
+**Mini-batch stochastic gradient descent (mini-batch SGD)** is a compromise between full-batch iteration and SGD. A mini-batch is typically between 10 and 1,000 examples, chosen at random. Mini-batch SGD reduces the amount of noise in SGD but is still more efficient than full-batch.
+
+小批量梯度下降是批量梯度下降和随机梯度下降折中，通过参数$$b$$指明每次迭代时，用于更新$$\theta$$的样本数。假定$$b=10,m=1000$$，小批量梯度下降工作过程如下：
+
+$$
+\begin{align*}
+&\mbox{重复直到收敛：} \\
+& \quad \mbox{for $i=1,11,21,...,991$：} \\
+& \quad \quad \theta_j = \theta_j - \alpha\frac{1}{10}\sum_{k=i}^{i+9}(h_\theta(x^{(i)})-y^{(i)})x_j^{(i)},
+\quad \mbox{for $j=0,...,n$}
+\end{align*}
+$$
+
+<div style="text-align:center">
+  <img src="./Images/mbgd1.png" width="600"></img>
+</div>
+
+<br></br>
