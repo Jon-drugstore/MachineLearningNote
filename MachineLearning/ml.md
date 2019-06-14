@@ -18,34 +18,50 @@
   
   * K近邻、感知机、逻辑斯谛回归模型、最大熵模型、SVN和提升方法是判别模型。隐马尔可夫是生成模型。
 
-<br></br>
+<br>
 
 
+### Supervised Learning
+**（数据集有输入和标签。）**监督学习是输入标记的数据，然后建模拟合，最后让计算机预测未知数据的结果。
 
-## AI vs ML vs DL
-----
-<p align="center">
-  <img src="./Images/ml4.png" width = "700"/>
-</p>
+一般有两种：
+1. 回归问题 Regression：预测一系列**连续值**。
 
-机器学习是AI子集，涵盖有关数据训练的学习算法研究：
-* 线性回归（Linear Regression，数理统计中回归分析方法）；
-* K均值（K-means，基于原型的目标函数聚类方法）；
-* 决策树（Decision Trees，直观运用概率分析的一种图解法）；
-* 随机森林（Random Forest，包含多个决策树的分类器）；
-* PCA（Principal Component Analysis，主成分分析，一种多变量分析方法）；
-* SVM（Support Vector Machine，支持向量机，一种监督式学习的方法）；
-* ANN（Artificial Neural Networks，人工神经网络，一种运算模型）。
+   ![](Images/regression.png)
+
+2. 分类问题 Classification：预测一系列**离散值**。
+
+    常用的分类器有人工神经网络、SVM、近期邻居法、高斯混合模型、朴素贝叶斯方法、决策树和径向基函数分类。
+
+   ![](Images/classification.png)
+
+
+当特征量种类很多的时，计算机内存不够用，可用SVM。**SVM用数学方式能让计算机处理无限多个特征。**
 
 <br>
 
 
-### Problem Solving Approach
-When solving a problem using traditional Machine Learning, it is generally recommended to break the problem down into different parts, solve them individually and combine them to get the result. Deep Learning in contrast advocates to solve the problem end-to-end.
+### Unsupervised Learning
+**（数据集只有输入，没有标签。）**相对监督学习，训练集没有人为标注（无反馈），我们不会给出结果或无法得知训练集结果是什么，单纯由计算机通过无监督学习算法自行分析，从而得出结果。
 
-<p align="center">
-  <img src="./Images/ml2.png" width = "600"/>
-</p>
+Unsupervised Learning allows us to approach problems with little or no idea what our results should look like. We ca derive structure from data where we don't necessarily know the effect of variables. We can derive this structure by clustering the data based on relationships among the variables in the data. With Unsupervised Learning, there is no feedback based on the prediction results.
+
+无监督学习一般分为两种：
+1. 聚类 Clustering
+   - 新闻聚合
+   - 市场细分
+   - 社交网络分析
+2. 非聚类
+   - 鸡尾酒问题。在鸡尾酒会上，说话声音彼此重叠，很难分辨面前的人说什么。我们很难对这个问题数据标注，而通过无监督学习算法，可将说话者声音同背景音乐分离。
+
+下面问题答案为2和3：
+![](./Images/unsupervised_learning.png)
+
+<br>
+
+
+### Semi-supervised Learning
+半监督学习就是利用数据集上已有的模型，对未知数据打标签。
 
 <br></br>
 
@@ -69,26 +85,6 @@ GPU缺点：
 <p align="center">
   <img src="./Images/gpu_cpu.jpg" width = "600"/>
 </p>
-
-<br></br>
-
-
-
-## Validation
-----
-Make sure test set meets the following two conditions:
-1. Is large enough to yield statistically meaningful results?
-2. Is representative of the data set as a whole? In other words, don't pick a test set with different characteristics than the training set.
-
-Never train on test data. If seeing surprisingly good results on evaluation metrics, it might be a sign that you are accidentally training on test set.
-
-Partition data set:
-
-![](./Images/part_data_set.svg)
-
-Use validation set to evaluate results from training set. Then, use test set to double-check evaluation after model has "passed" the validation set.
-
-![](./Images/data_validation_wf.svg)
 
 <br></br>
 

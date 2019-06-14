@@ -60,7 +60,7 @@ p = np.exp(scores) / np.sum(np.exp(scores))
 
 
 
-##  Softmax 损失函数
+## Softmax损失函数
 ----
 $$
 S_{i} = \frac{e^{S_{y_{i}}}}{\sum^{C}_{j=1}e^{S_{j}}}
