@@ -110,18 +110,6 @@ $$J$$也称为失真代价函数（Distortion Cost Function）。
   <img src="./Images/kmeans7.png" width = "300"/>
 </p>
 
-存在一种称为肘部法则（Elbow Method）方法来选定$$K$$值：
-
-<p align="center">
-  <img src="./Images/elbow_method1.png" width = "300"/>
-</p>
-
-“肘关节”部分对应的$$K$$值是最恰当的$$K$$值，但并不是所有代价函数曲线都存在明显“肘关节”，如：
-
-<p align="center">
-  <img src="./Images/elbow_method2.png" width = "300"/>
-</p>
-
 K-Means的结果是服务后续目的（如通过聚类进行市场分析），所以不能脱离实际而单纯以数学方法选择$$K$$值。假定衣服要分为S/M/L三个尺码，就设$$K=3$$。如果要XS\S\M\L\XL五个尺码，就设$$K=5$$：
 
 ![](./Images/kmeans8.png)
@@ -193,6 +181,3 @@ $$
 
 ![](./Images/kmeans_ex2_1.png)
 ![](./Images/kmeans_ex2_2.png)
-
-
-![](./Images/kmeans_ex3.png)

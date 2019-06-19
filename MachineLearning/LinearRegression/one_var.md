@@ -4,16 +4,6 @@
 
 
 
-## Model Representation
-----
-<p align="center">
-  <img src="./Images/model_repre.png" width = "550"/>
-</p>
-
-<br></br>
-
-
-
 ## Cost Function
 ----
 * 损失函数（Loss/Error Function）：计算单个训练集的误差。
@@ -82,10 +72,10 @@ Thus as a goal, we should try to minimize the cost function. In this case, $$\th
 给定数据集：
 
 <p align="center">
-  <img src="./Images/cost9.png" width = "550"/>
+  <img src="./Images/cost9.png" width = "400"/>
 </p>
 
-参数在 $\theta_0$ 不恒为 $0$ 时代价函数 $J\left(\theta\right)$ 关于 $\theta_0, \theta_1$ 的3-D图像，图像中的高度为代价函数的值。
+参数在$$\theta_0$$不恒为0时代价函数$$J\left(\theta\right)$$关于$$\theta_0, \theta_1$$的3-D图像，图中高度为代价函数值。
 
 <p align="center">
   <img src="./Images/cost10.png" width = "550"/>
@@ -99,7 +89,7 @@ Taking any color and going along the 'circle', one would expect to get the same 
   <img src="./Images/cost6.png" width = "550"/>
 </p>
 
-$\theta_0 = 360, \theta_1 =0$ 时：
+$$\theta_0 = 360$$，$$\theta_1 =0$$时：
 
 <p align="center">
   <img src="./Images/cost7.png" width = "550"/>

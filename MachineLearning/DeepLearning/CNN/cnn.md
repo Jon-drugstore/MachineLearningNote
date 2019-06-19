@@ -9,7 +9,7 @@
 * 数据输入层 Input Layer
 * 卷积计算层 CONV Layer - 线性乘积求和。
 * ReLU激励层 ReLU Layer
-* 池化层 Pooling Layer - 取区域平均或最大。
+* 池化层 Pooling Layer
 * 全连接层 Fully Coonected Layer
 
 <p align="center">
@@ -170,10 +170,6 @@
 </p>
 
 <p align="center">
-  <img src="./Images/cnn23.png" width = "400"/>
-</p>
-
-<p align="center">
   <img src="./Images/cnn24.png" width = "400"/>
 </p>
 
@@ -199,12 +195,6 @@
 
 
 ### 池化操作例子
-
-<p align="center">
-  <img src="./Images/cnn18.png" width = "400"/>
-</p>
-
-池化操作如下：
 
 <p align="center">
   <img src="./Images/cnn19.png" width = "400"/>

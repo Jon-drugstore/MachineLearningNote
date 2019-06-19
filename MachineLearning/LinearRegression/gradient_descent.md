@@ -8,10 +8,6 @@
 ----
 在特征量很大情况下，即便生成图像，人工也很难读出$$J(\theta)$$最小值，且多数情况无法可视化，故引入梯度下降（Gradient Descent），让计算机自动找出最小化代价函数时对应的$$\theta$$值。
 
-<p align="center">
-  <img src="./Images/gd6.png" width = "400"/>
-</p>
-
 <br></br>
 
 
@@ -54,16 +50,6 @@ We make steps down the cost function in the direction with the steepest descent.
 > 学习速率决定参数值变化速率，即“走多少距离”。偏导部分决定下降方向，即“下一步往哪走”。
 
 For example, the distance between each 'star' represents a step determined by parameter $$\alpha$$. The direction is determined by the partial derivative of $$\mathit{J}(\theta_0, \theta_1)$$. Depending on where one starts on graph, one could end up at different points. 
-
-**Hyperparameters** are the knobs that programmers tweak in machine learning algorithms. If a learning rate is too small, learning will take too long. Conversely, if a learning rate is too large, the next point will perpetually bounce haphazardly across the bottom of the well like a quantum mechanics experiment gone horribly wrong.
-
-<p align="center">
-  <img src="./Images/learning_rate1.svg" width = "400"/>
-</p>
-
-<p align="center">
-  <img src="./Images/learning_rate2.svg" width = "400"/>
-</p>
 
 <br></br>
 
@@ -127,7 +113,7 @@ $$
 \frac{\partial}{\partial\theta_1} J(\theta) = \frac{1}{m} \sum\limits_{i=1}^{m} (h_{\theta}(x^{(i)}) - y^{(i)}) * x_{1}^{(i)}
 $$
 
-上文提到的梯度下降都为**批量梯度下降（Batch Gradient Descent）**，即每次计算都使用所有数据集$$\left(\sum\limits_{i=1}^{m}\right)​$$。
+上文提到的梯度下降都为**批量梯度下降（Batch Gradient Descent）**，即每次计算都使用所有数据集$$\sum\limits_{i=1}^{m}$$。
 
 由于线性回归函数是凸函数，呈现碗状，即只有一个全局最优值，所以函数定会收敛到全局最小值（学习速率不可过大）。所以，线性回归函数求最小值属于凸函数优化问题。
 
@@ -195,20 +181,8 @@ The gradient always points in the direction of steepest increase in the loss fun
 
 
 
-## Learning Rate
-----
-As noted, the gradient vector has both a direction and a magnitude. Gradient descent algorithms multiply the gradient by a scalar known as the **learning rate (step size)** to determine next point. For example, if the gradient magnitude is 2.5 and the learning rate is 0.01, then the gradient descent algorithm will pick the next point 0.025 away from the previous point.
-
-<br></br>
-
-
-
 ## Stochastic Gradient Descent 随机梯度下降
 ----
-In gradient descent, a batch is the total number of examples you use to calculate the gradient in a single iteration. A large data set with randomly sampled examples probably contains redundant data. In fact, redundancy becomes more likely as the batch size grows. Some redundancy can be useful to smooth out noisy gradients, but enormous batches tend not to carry much more predictive value than large batches.
-
-By choosing examples at random from data set, we could estimate a big average from a much smaller one. **Stochastic gradient descent (SGD)** takes this idea to the extreme -- it uses only a single example (a batch size of 1) per iteration. Given enough iterations, SGD works but is very noisy. The term _stochastic_ indicates that the one example comprising each batch is chosen at random.
-
 随机梯度下降算法首先对训练集随机洗牌，然后：
 
 $$

@@ -18,12 +18,6 @@
   <img src="./Images/ne1.png" width = "550"/>
 </p>
 
-> Octave代码：`theta = inv(X'*X)*X'*y`。
->
-> $$X^{-1}$$表示矩阵$$X$$的逆。Octave中，`inv`函数计算矩阵逆，还有`pinv`函数。
->
-> `X'`为在Octave中表示矩阵$$X$$转置，即$$X^T$$。
-
 <br></br>
 
 

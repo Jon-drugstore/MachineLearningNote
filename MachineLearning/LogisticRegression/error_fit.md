@@ -1,12 +1,15 @@
 # <center>Underfitting & Overfitting</center>
 
-<br></br>
 
+
+<br></br>
 
 * 欠拟合 Underfitting：数据距离拟合曲线较远。如下左图。
 * 过拟合 Overfitting：过度拟合，貌似拟合几乎每一个数据，但是丢失了信息规律。如下右图。
 
 ![](./Images/fitting.png)
+
+<br></br>
 
 
 

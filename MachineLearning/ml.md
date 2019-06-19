@@ -10,19 +10,13 @@
 
 * 分类与回归 vs 聚类 vs 标注。
 
-* 生成模型 vs 判别模型。
-
-  * 都是有监督学习。
-  
-  * 生成模型是生成数据的分布的模型；判别模型是判别数据输出量的模型。从结果角度，两种模型都输出量。但生成模型处理过程会告诉数据统计信息（贝叶斯概率或数据分布等），更接近统计学。判别模型通过处理得到结果，结果可能是概率的或不是。如决策树的if then说不是这个就是那个，明显是判别。
-  
-  * K近邻、感知机、逻辑斯谛回归模型、最大熵模型、SVN和提升方法是判别模型。隐马尔可夫是生成模型。
-
 <br>
 
 
 ### Supervised Learning
-**（数据集有输入和标签。）**监督学习是输入标记的数据，然后建模拟合，最后让计算机预测未知数据的结果。
+> **数据集有输入和标签。**
+
+监督学习是输入标记的数据，然后建模拟合，最后让计算机预测未知数据的结果。
 
 一般有两种：
 1. 回归问题 Regression：预测一系列**连续值**。
@@ -31,31 +25,27 @@
 
 2. 分类问题 Classification：预测一系列**离散值**。
 
-    常用的分类器有人工神经网络、SVM、近期邻居法、高斯混合模型、朴素贝叶斯方法、决策树和径向基函数分类。
+    常用的分类器有人工神经网络、SVM、高斯混合模型、朴素贝叶斯方法、决策树和径向基函数分类。
 
    ![](Images/classification.png)
-
-
-当特征量种类很多的时，计算机内存不够用，可用SVM。**SVM用数学方式能让计算机处理无限多个特征。**
 
 <br>
 
 
 ### Unsupervised Learning
-**（数据集只有输入，没有标签。）**相对监督学习，训练集没有人为标注（无反馈），我们不会给出结果或无法得知训练集结果是什么，单纯由计算机通过无监督学习算法自行分析，从而得出结果。
+> **数据集只有输入，没有标签。**
 
-Unsupervised Learning allows us to approach problems with little or no idea what our results should look like. We ca derive structure from data where we don't necessarily know the effect of variables. We can derive this structure by clustering the data based on relationships among the variables in the data. With Unsupervised Learning, there is no feedback based on the prediction results.
+相对监督学习，训练集没有人为标注（无反馈），我们不会给出结果或无法得知训练集结果是什么，单纯由计算机自行分析得出结果。
 
-无监督学习一般分为两种：
+Unsupervised Learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of variables. We can derive this structure by clustering the data based on relationships among the variables in the data. With Unsupervised Learning, there is no feedback based on the prediction results.
+
+无监督学习分为两种：
 1. 聚类 Clustering
    - 新闻聚合
    - 市场细分
    - 社交网络分析
 2. 非聚类
    - 鸡尾酒问题。在鸡尾酒会上，说话声音彼此重叠，很难分辨面前的人说什么。我们很难对这个问题数据标注，而通过无监督学习算法，可将说话者声音同背景音乐分离。
-
-下面问题答案为2和3：
-![](./Images/unsupervised_learning.png)
 
 <br>
 
@@ -70,12 +60,12 @@ Unsupervised Learning allows us to approach problems with little or no idea what
 ## GPU vs CPU
 ----
 GPU好处：
-1. 显示芯片有更大内存带宽。例如GeForce 8800GTX有50GB/s内存带宽，高阶CPU内存带宽在10GB/s。
-2. 显示芯片有更大量执行单元。例如GeForce 8800GTX有128个stream processors，频率为1.35GHz。CPU频率通常较高，但执行单元数目要少。
+1. 显示芯片有更大内存带宽。
+2. 显示芯片有更大量执行单元。例如GeForce 8800GTX有128个stream processors，频率为1.35GHz。CPU频率通常较高，但执行单元数目少。
 
 GPU缺点：
-1. 显示芯片运算单元数量很多，因此对于不能高度并行化工作，带来的帮助不大。
-2. 显示芯片通常只支持32 bits浮点数，且多半不能完全支持IEEE 754规格。许多显示芯片没有分开整数运算单元，因此整数运算效率差。
+1. 显示芯片运算单元数量多，对于不能高度并行化工作帮助不大。
+2. 显示芯片通常只支持32 bits浮点数，且多半不完全支持IEEE 754规格。许多显示芯片没有分开整数运算单元，因此整数运算效率差。
 3. 显示芯片不具有分支预测等复杂流程控制单元，对高度分支的程序，效率差。
 
 由于显示芯片大量并行计的特性，它处理问题方式和CPU不同：
@@ -109,7 +99,7 @@ Here's how we can map our street names to numbers:
 * map everything else (OOV) to 4
 
 However, if we incorporate these index numbers directly into our model, it will impose some constraints:
-* We'll be learning a single weight that applies to all streets. For example, if we learn a weight of 6 for street_name, then we will multiply it by 0 for Charleston Road, by 1 for North Shoreline Boulevard and so on. Consider a model that predicts house prices using `street_name` as a feature. It is unlikely that there is a linear adjustment of price based on street name, and furthermore this would assume you have ordered the streets based on their average house price. Our model needs the flexibility of learning different weights for each street that will be added to the price estimated using the other features.
+* We'll be learning a single weight that applies to all streets. For example, if we learn a weight of 6 for `street_name`, then we will multiply it by 0 for Charleston Road, by 1 for North Shoreline Boulevard and so on. Consider a model that predicts house prices using `street_name` as a feature. It is unlikely that there is a linear adjustment of price based on street name, and furthermore this would assume you have ordered the streets based on their average house price. Our model needs the flexibility of learning different weights for each street that will be added to the price estimated using the other features.
 
 * We aren't accounting for cases where `street_name` may take multiple values. For example, many houses are located at the corner of two streets, and there's no way to encode that information in the `street_name` value if it contains a single index.
 
@@ -133,16 +123,16 @@ Figure illustrates a one-hot encoding of a particular street: Shorebird Way. The
 This is a linear problem.
 
 <p align="center">
-  <img src="./Images/feature_crosses1.png" width = "400"/>
+  <img src="./Images/feature_crosses1.png" width = "200"/>
 </p>
 
 But this is not.
 
 <p align="center">
-  <img src="./Images/feature_crosses2.png" width = "400"/>
+  <img src="./Images/feature_crosses2.png" width = "200"/>
 </p>
 
-To solve it, create a feature cross. **A feature cross is a synthetic feature that encodes nonlinearity in the feature space by multiplying two or more input features together.** Create a feature cross named $$x_{3}$$ by crossing $$x_{1}$$ and $$x_{2}$$:
+To solve it, create a feature cross, which **is a synthetic feature that encodes nonlinearity in the feature space by multiplying two or more input features together.** Create a feature cross named $$x_{3}$$ by crossing $$x_{1}$$ and $$x_{2}$$:
 
 $$
 x_{3} = x_{1}x_{2}

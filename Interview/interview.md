@@ -7,7 +7,7 @@
 ## Bias vs Variance
 ----
 <p align="center">
-  <img src="./Images/bias_variance1.png" width = "600"/>
+  <img src="./Images/bias_variance1.jpg" width = "600"/>
 </p>
 
 多项式回归中，如果多项式次数高，则易过拟合，此时模型出现高方差high variance (overfitting)：
