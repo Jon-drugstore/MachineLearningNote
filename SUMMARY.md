@@ -73,6 +73,9 @@
     * [Softmax](MachineLearning/DeepLearning/softmax.md)
 
 
+* [AutoML](MachineLearning/AutoML/automl.md)
+
+
 * [Regularization](MachineLearning/Regularization/regular.md)
     * [Cost Function](MachineLearning/Regularization/cost.md)
     * [Regularized Linear Regression](MachineLearning/Regularization/linear_regression.md)
