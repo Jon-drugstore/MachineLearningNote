@@ -1,6 +1,7 @@
 # Summary
 
 * [Interview](Interview/interview.md)
+    * [Statistics](Interview/statistics.md)
 
 
 * [Machine Learning](MachineLearning/ml.md)
