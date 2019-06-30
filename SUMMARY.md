@@ -10,25 +10,22 @@
         * [Gaussian Distribution](MachineLearning/Theory/gaussian.md)
 
 
-* [Linear Regression](MachineLearning/LinearRegression/lr.md)
-    * [One Variable](MachineLearning/LinearRegression/one_var.md)
-    * [Gradient Descent](MachineLearning/LinearRegression/gradient_descent.md)
-    * [Multiple Variables](MachineLearning/LinearRegression/mult_var.md)
-    * [Features and Polynomial Regression](MachineLearning/LinearRegression/features.md)
-    * [Normal Equation](MachineLearning/LinearRegression/normal_equation.md)
-
-
-* [Logistic Regression](MachineLearning/LogisticRegression/lr.md)
-    * [Sigmod](MachineLearning/LogisticRegression/sigmod.md)
-    * [Decision Boundary](MachineLearning/LogisticRegression/decision_boundary.md)
-    * [Cost Function & Gradient Descent](MachineLearning/LogisticRegression/cost_gd.md)
-    * [Advanced Optimization](MachineLearning/LogisticRegression/advanced_optimization.md)
-    * [Underfitting & Overfitting](MachineLearning/LinearRegression/error_fit.md)
-    
-
-* [Classification]()
-    * [Confusion Matrix](MachineLearning/Classification/confusion_matrix.md)
-    * [AUC - Area Under Curve](MachineLearning/Classification/auc.md)
+* [Supervised Learning](MachineLearning/SupervisedLearning/sl.md)
+    * [Linear Regression](MachineLearning/SupervisedLearning/LinearRegression/lr.md)
+        * [One Variable](MachineLearning/SupervisedLearning/LinearRegression/one_var.md)
+        * [Gradient Descent](MachineLearning/SupervisedLearning/LinearRegression/gradient_descent.md)
+        * [Multiple Variables](MachineLearning/SupervisedLearning/LinearRegression/mult_var.md)
+        * [Features and Polynomial Regression](MachineLearning/SupervisedLearning/LinearRegression/features.md)
+        * [Normal Equation](MachineLearning/SupervisedLearning/LinearRegression/normal_equation.md)
+    * [Logistic Regression](MachineLearning/SupervisedLearning/LogisticRegression/lr.md)
+        * [Sigmod](MachineLearning/SupervisedLearning/LogisticRegression/sigmod.md)
+        * [Decision Boundary](MachineLearning/SupervisedLearning/LogisticRegression/decision_boundary.md)
+        * [Cost Function & Gradient Descent](MachineLearning/SupervisedLearning/LogisticRegression/cost_gd.md)
+        * [Advanced Optimization](MachineLearning/SupervisedLearning/LogisticRegression/advanced_optimization.md)
+        * [Underfitting & Overfitting](MachineLearning/SupervisedLearning/LogisticRegression/error_fit.md)
+    * [Classification]()
+        * [Confusion Matrix](MachineLearning/SupervisedLearning/Classification/confusion_matrix.md)
+        * [AUC - Area Under Curve](MachineLearning/SupervisedLearning/Classification/auc.md)
     
    
 * [Evolutionary Algorithm]()
