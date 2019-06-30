@@ -74,9 +74,10 @@
 
 
 * [AutoML](MachineLearning/AutoML/automl.md)
-    * [NAS: Neural Architecture Search](MachineLearning/AutoML/ArchitectureSearch/nas.md)
-    * [NASNet](MachineLearning/AutoML/ArchitectureSearch/nasnet.md)
-    * [Evolution for Architecture Search](MachineLearning/AutoML/ArchitectureSearch/evolution.md)
+    * [Architecture Search](MachineLearning/AutoML/ArchitectureSearch/as.md)
+        * [NAS: Neural Architecture Search](MachineLearning/AutoML/ArchitectureSearch/nas.md)
+        * [NASNet](MachineLearning/AutoML/ArchitectureSearch/nasnet.md)
+        * [Evolution for Architecture Search](MachineLearning/AutoML/ArchitectureSearch/evolution.md)
 
 
 * [Regularization](MachineLearning/Regularization/regular.md)
