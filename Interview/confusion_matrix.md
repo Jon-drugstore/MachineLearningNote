@@ -6,22 +6,7 @@
 
 ## What
 ----
-Make following definitions:
-* "Wolf" is a positive class.
-* "No wolf" is a negative class.
 
-![](./Images/confusion_matrix1.png)
-
-* A **true positive** is an outcome where the model correctly predicts the positive class. Similarly, a **true negative** is an outcome where the model correctly predicts the negative class.
-
-* A **false positive** is an outcome where the model incorrectly predicts the positive class. And a **false negative** is an outcome where the model incorrectly predicts the negative class.
-
-<br></br>
-
-
-
-## Accuracy, Precision, Recall & F-measure
-----
 ![](./Images/confusion_matrix_metrics.png)
 
 混淆矩阵：

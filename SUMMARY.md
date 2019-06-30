@@ -1,7 +1,9 @@
 # Summary
 
 * [Interview](Interview/interview.md)
+    * [Bias vs Variance](Interview/bias_variance.md)
     * [Statistics](Interview/statistics.md)
+    * [Confusion Matrix](Interview/confusion_matrix.md)
 
 
 * [Machine Learning](MachineLearning/ml.md)
