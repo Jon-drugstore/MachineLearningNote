@@ -6,10 +6,8 @@
 
 ## What
 ----
-
 ![](./Images/confusion_matrix_metrics.png)
 
-混淆矩阵：
 - True Positive(TP)：正类预测为正类。
 - True Negative(TN)：负类预测为负类。
 - False Positive(FP)：负类预测为正类，即误报（Type I error）。

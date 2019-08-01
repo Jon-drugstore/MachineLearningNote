@@ -63,6 +63,68 @@
 
 
 
+## Performance
+----
+可能有上万个用户和Event，如何快速推荐呢？
+
+1. Dimensionality reduction techniques such as clustering.
+
+    因为是对用户推荐Event，可以对Event做聚类，尽量选取相似的。
+
+2. 外排序
+
+    对raw recommendation结果，可能很多。可以分散在各个“桶”中，各个桶单独排序，选取Top-K，再对所有的Top-K进行归并排序。
+
+3. 数据预处理
+
+    - 可以先对Event打标记，根据用户感兴趣的标记类型选择数据，减少检索数量。
+    - Reduce the number of customers by randomly sampling the customers or discarding customers with few purchases.
+    - Reduce the number of items by discarding very popular or unpopular items.
+
+<br></br>
+
+
+
+## Challenge
+----
+1. 冷启动
+
+    3类：
+
+    1. 用户冷启动：当新用户到来时，没有他的行为数据，无法根据历史行为预测兴趣。
+    2. 物品冷启动：如何解决将新物品推荐给可能对它感兴趣的用户。
+    3. 系统冷启动：系统新上线，用户、物品数据少。
+
+    解决方案：
+
+    - 提供非个性化推荐：最简单例子是线推荐热门排行榜，然后等用户数据收集到一定时，再切换为个性化推荐。
+    - 利用用户注册时提供的年龄、性别等数据做粗粒度的个性化。
+    - 要求用户首次登录时提供反馈，比如输入感兴趣的标签。
+    - 对新物品，利用内容信息，推荐给喜欢过和它们相似的物品的用户。
+    - 系统冷启动时，可引入专家知识，通过一定高效方式迅速建立起物品的相关度表。
+
+2. 高并发
+
+3. 数据缺失
+
+    现实场景存在用户或物品信息不完善，或部分信息有误。
+
+4. 非结构化信息
+
+    比如图片、视频和音频等。
+
+5. 噪音
+
+    产生垃圾数据，这是ETL和特征工程要解决的。
+
+6. 评估推荐算法价值
+
+    怎么衡量推荐系统价值产出，怎么为推荐系统制定业务指标，通过指标提升推荐系统效果的同时促进业务发展。
+
+<br></br>
+
+
+
 ## Netflix
 ----
 <p align="center">
@@ -120,67 +182,5 @@ At Netflix, near-real-time event flow is managed through an internal framework c
 Recommendation results can be serviced directly from lists that we have previously computed or they can be generated on the fly by online algorithms. Of course, we can think of using a combination of both where the bulk of the recommendations are computed offline and we add some freshness by post-processing the lists with online algorithms that use real-time signals.
 
 At Netflix, we store offline and intermediate results in various repositories to be later consumed at request time: the primary data stores we use are Cassandra, EVCache, and MySQL. MySQL allows for storage of structured relational data that might be required for some future process through general-purpose querying. However, the generality comes at the cost of scalability issues in distributed environments. Cassandra and EVCache both offer the advantages of key-value stores. Cassandra works well in some situations, however in cases where we need intensive and constant write operations we find EVCache to be a better fit. 
-
-<br></br>
-
-
-
-## Performance
-----
-可能有上万个用户和Event，如何快速推荐呢？
-
-1. Dimensionality reduction techniques such as clustering.
-
-    因为是对用户推荐Event，可以对Event做聚类，尽量选取相似的。
-
-2. 外排序
-
-    对raw recommendation结果，可能很多。可以分散在各个“桶”中，各个桶单独排序，选取Top-K，再对所有的Top-K进行归并排序。
-
-3. 数据预处理
-
-    - 可以先对Event打标记，根据用户感兴趣的标记类型选择数据，减少检索数量。
-    - Reduce the number of customers by randomly sampling the customers or discarding customers with few purchases.
-    - Reduce the number of items by discarding very popular or unpopular items.
-
-<br></br>
-
-
-
-## Challenge
-----
-1. 冷启动
-
-    3类：
-
-    1. 用户冷启动：当新用户到来时，没有他的行为数据，无法根据历史行为预测兴趣。
-    2. 物品冷启动：如何解决将新物品推荐给可能对它感兴趣的用户。
-    3. 系统冷启动：系统新上线，用户、物品数据少。
-
-    解决方案：
-
-    1. 提供非个性化推荐：最简单例子是线推荐热门排行榜，然后等用户数据收集到一定时，再切换为个性化推荐。
-    2. 利用用户注册时提供的年龄、性别等数据做粗粒度的个性化。
-    3. 要求用户首次登录时提供反馈，比如输入感兴趣的标签。
-    4. 对新物品，利用内容信息，推荐给喜欢过和它们相似的物品的用户。
-    5. 系统冷启动时，可引入专家知识，通过一定高效方式迅速建立起物品的相关度表。
-
-2. 高并发
-
-3. 数据缺失
-
-    现实场景存在用户或物品信息不完善，或部分信息有误。
-
-4. 非结构化信息
-
-    比如图片、视频和音频等。
-
-5. 噪音
-
-    产生垃圾数据，这是ETL和特征工程要解决的。
-
-6. 评估推荐算法价值
-
-    怎么衡量推荐系统价值产出，怎么为推荐系统制定业务指标，通过指标提升推荐系统效果的同时促进业务发展。
 
 <br></br>

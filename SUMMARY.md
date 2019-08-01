@@ -16,6 +16,7 @@
 * [Supervised Learning](MachineLearning/SupervisedLearning/sl.md)
     * [Linear Regression](MachineLearning/SupervisedLearning/LinearRegression/lr.md)
         * [One Variable](MachineLearning/SupervisedLearning/LinearRegression/one_var.md)
+        * [Learning Rate](MachineLearning/SupervisedLearning/LinearRegression/learning_rate.md)
         * [Gradient Descent](MachineLearning/SupervisedLearning/LinearRegression/gradient_descent.md)
         * [Multiple Variables](MachineLearning/SupervisedLearning/LinearRegression/mult_var.md)
         * [Features and Polynomial Regression](MachineLearning/SupervisedLearning/LinearRegression/features.md)
@@ -45,7 +46,7 @@
     * [Reference](MachineLearning/SVM/reference.md)
 
 
-* [UnsupervisedLearning]()
+* [UnsupervisedLearning](MachineLearning/UnsupervisedLearning/ul.md)
     * [K-Means](MachineLearning/UnsupervisedLearning/kmeans.md)
     * [Anomaly Detection](MachineLearning/UnsupervisedLearning/AnomalyDetection/anomaly.md)
         * [Algorithm](MachineLearning/UnsupervisedLearning/AnomalyDetection/algorithm.md)

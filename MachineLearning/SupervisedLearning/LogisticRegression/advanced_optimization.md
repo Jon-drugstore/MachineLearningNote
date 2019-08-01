@@ -60,7 +60,7 @@ initialTheta = zeros(2,1);
 
 3. 返回结果：
 
-    ```matlab
+```matlab
 optTheta =
      5
      5
@@ -68,4 +68,4 @@ optTheta =
 functionVal = 0
 
 exitFlag = 1
-    ```
+```

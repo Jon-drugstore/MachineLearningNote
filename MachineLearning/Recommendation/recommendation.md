@@ -10,16 +10,6 @@
 
 
 
-## Data Acquisition
-----
-1. Explicit Data: customer rating; feedback; ...etc.
-2. Implicit Data: purchase history; click or browse history; ...etc.
-3. Product Information: product taxonomy; product attribute; product description; ...etc.
-
-<br></br>
-
-
-
 ## Collaborative Filtering
 ----
 Based on assumptions:

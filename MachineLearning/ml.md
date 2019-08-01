@@ -14,8 +14,6 @@
 
 
 ### Supervised Learning
-> **数据集有输入和标签。**
-
 监督学习是输入标记的数据，然后建模拟合，最后让计算机预测未知数据的结果。
 
 一般有两种：
@@ -37,13 +35,8 @@
 
 相对监督学习，训练集没有人为标注（无反馈），我们不会给出结果或无法得知训练集结果是什么，单纯由计算机自行分析得出结果。
 
-Unsupervised Learning allows us to approach problems with little or no idea what our results should look like. We can derive structure from data where we don't necessarily know the effect of variables. We can derive this structure by clustering the data based on relationships among the variables in the data. With Unsupervised Learning, there is no feedback based on the prediction results.
-
-无监督学习分为两种：
-1. 聚类 Clustering
-   - 新闻聚合
-   - 市场细分
-   - 社交网络分析
+分为两种：
+1. 聚类
 2. 非聚类
    - 鸡尾酒问题。在鸡尾酒会上，说话声音彼此重叠，很难分辨面前的人说什么。我们很难对这个问题数据标注，而通过无监督学习算法，可将说话者声音同背景音乐分离。
 
